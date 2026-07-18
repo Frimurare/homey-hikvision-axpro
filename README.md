@@ -92,7 +92,7 @@ The app authenticates to the panel using Hikvision's session login (`sessionIDVe
 
 ## License
 
-MIT © Ulf Holmström
+**GPL-3.0-or-later** © Ulf Holmström. This app is free software: you may use, study, share and modify it, but any distributed derivative must remain open under the same license. See [LICENSE](LICENSE).
 
 ---
 
