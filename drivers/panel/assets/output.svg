@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="#1f1f1f">
-<rect x="26" y="20" width="48" height="60" rx="6" fill="none" stroke="#1f1f1f" stroke-width="5"/><rect x="42" y="14" width="6" height="10"/><rect x="52" y="14" width="6" height="10"/><path d="M50 40 v14 M50 54 l-8 12 h16 z"/>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 2v10" />
+  <path d="M18.4 6.6a9 9 0 1 1-12.77.04" />
 </svg>

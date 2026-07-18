@@ -1,6 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <path d="M50 6 L86 20 V50 C86 74 68 90 50 96 C32 90 14 74 14 50 V20 Z" fill="#E30613"/>
-  <path d="M50 34 a10 10 0 0 1 10 10 v10 l6 8 H34 l6-8 V44 a10 10 0 0 1 10-10 Z" fill="#fff"/>
-  <circle cx="50" cy="70" r="5" fill="#fff"/>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
 </svg>

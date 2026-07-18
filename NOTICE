@@ -1,0 +1,16 @@
+Hikvision AX PRO for Homey
+Copyright (C) 2026 Ulf Holmström
+Licensed under GPL-3.0-or-later (see LICENSE).
+
+Third-party assets
+------------------
+Device icons are derived from:
+
+- Lucide (https://lucide.dev) — ISC License, Copyright (c) for Lucide Contributors.
+  Icons used: shield-check, radar, cctv, door-open, vibrate, droplet, wind,
+  thermometer, octagon-alert, keyboard, volume-2, radio-tower, power, box.
+
+- Material Design Icons (https://pictogrammers.com/library/mdi/) — Apache License 2.0,
+  by Pictogrammers. Icon used: smoke-detector.
+
+Both licenses are compatible with GPL-3.0.
