@@ -1,16 +1,9 @@
 'use strict';
 const Homey = require('homey');
 const HikAxPro = require('../../lib/HikAxPro');
+const { zoneProfile, PERIPHERALS } = require('../../lib/profiles');
 
-const CAPS = {
-  pircam:                ['alarm_motion', 'measure_temperature', 'measure_battery', 'alarm_tamper'],
-  passiveInfrared:       ['alarm_motion', 'measure_temperature', 'measure_battery', 'alarm_tamper'],
-  magneticContact:       ['alarm_contact', 'measure_temperature', 'measure_battery', 'alarm_tamper'],
-  wirelessSmokeDetector: ['alarm_smoke', 'measure_temperature', 'measure_battery', 'alarm_tamper'],
-};
-const CLASS = {
-  magneticContact: 'sensor', pircam: 'sensor', passiveInfrared: 'sensor', wirelessSmokeDetector: 'sensor',
-};
+const ICON = (name) => `/drivers/panel/assets/${name}.svg`;
 
 class PanelDriver extends Homey.Driver {
   async onPair(session) {
@@ -28,28 +21,55 @@ class PanelDriver extends Homey.Driver {
       if (!creds) throw new Error('Not connected');
       const api = new HikAxPro(creds);
       await api.login();
-      const z = await api.zoneStatus();
+      const [z, ex] = await Promise.all([
+        api.zoneStatus(),
+        api.exDevStatus().catch(() => null),
+      ]);
       await api.logout();
 
+      const store = { username: creds.username, password: creds.password };
       const devices = [{
         name: 'AX PRO Panel',
         data: { id: `panel-${creds.host}`, host: creds.host, type: 'panel' },
-        store: { username: creds.username, password: creds.password },
+        store,
+        icon: ICON('panel'),
         class: 'homealarm',
         capabilities: ['homealarm_state'],
       }];
 
+      // Zones (detectors)
       for (const it of (z.ZoneList || [])) {
         const Z = it.Zone;
-        const caps = CAPS[Z.detectorType] || ['measure_temperature', 'measure_battery', 'alarm_tamper'];
+        const p = zoneProfile(Z.detectorType);
         devices.push({
           name: Z.name || `Zone ${Z.id}`,
           data: { id: `zone-${creds.host}-${Z.id}`, host: creds.host, type: 'zone', zoneId: Z.id },
-          store: { username: creds.username, password: creds.password, detectorType: Z.detectorType },
-          class: CLASS[Z.detectorType] || 'sensor',
-          capabilities: caps,
+          store: { ...store, detectorType: Z.detectorType },
+          icon: ICON(p.icon),
+          class: p.cls,
+          capabilities: p.caps,
         });
       }
+
+      // Peripherals (keypads, sirens, repeaters, outputs, card readers)
+      const exDev = (ex && ex.ExDevStatus) || {};
+      for (const p of PERIPHERALS) {
+        for (const it of (exDev[p.list] || [])) {
+          const D = it[p.item] || Object.values(it)[0];
+          if (!D) continue;
+          // only expose temp for peripherals that actually report it
+          const caps = p.caps.filter((c) => c !== 'measure_temperature' || D.temperature !== undefined);
+          devices.push({
+            name: D.name || `${p.type} ${D.id}`,
+            data: { id: `${p.type}-${creds.host}-${D.id}`, host: creds.host, type: p.type, devId: D.id },
+            store,
+            icon: ICON(p.icon),
+            class: p.cls,
+            capabilities: caps,
+          });
+        }
+      }
+
       return devices;
     });
   }
