@@ -9,7 +9,7 @@
   "category": ["security"],
   "brandColor": "#E30613",
   "permissions": [],
-  "author": { "name": "Prudencia", "email": "ulf@prudsec.se" },
+  "author": { "name": "Ulf Holmström", "email": "ulf@prudsec.se" },
   "images": { "small": "/assets/images/small.png", "large": "/assets/images/large.png" },
   "drivers": [
     {
