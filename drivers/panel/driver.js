@@ -3,7 +3,9 @@ const Homey = require('homey');
 const HikAxPro = require('../../lib/HikAxPro');
 const { zoneProfile, PERIPHERALS } = require('../../lib/profiles');
 
-const ICON = (name) => `/drivers/panel/assets/${name}.svg`;
+// Homey resolves the pairing `icon` path relative to /drivers/<id>/assets/,
+// so it must be just "/name.svg" (NOT the full /drivers/... path).
+const ICON = (name) => `/${name}.svg`;
 
 class PanelDriver extends Homey.Driver {
   async onPair(session) {
