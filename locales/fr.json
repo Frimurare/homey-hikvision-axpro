@@ -1,0 +1,10 @@
+{
+  "pair": {
+    "intro": "Saisissez l'adresse IP de votre centrale AX PRO et les identifiants de sa page web.",
+    "connect": "Connecter",
+    "host": "Adresse IP",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe"
+  },
+  "device": { "panel": "Centrale AX PRO", "zone": "Zone" }
+}

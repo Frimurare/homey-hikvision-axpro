@@ -1,0 +1,10 @@
+{
+  "pair": {
+    "intro": "Geben Sie die IP-Adresse Ihrer AX PRO-Zentrale und die Anmeldedaten der Weboberfläche ein.",
+    "connect": "Verbinden",
+    "host": "IP-Adresse",
+    "username": "Benutzername",
+    "password": "Passwort"
+  },
+  "device": { "panel": "AX PRO-Zentrale", "zone": "Zone" }
+}

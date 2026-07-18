@@ -1,0 +1,10 @@
+{
+  "pair": {
+    "intro": "Enter your AX PRO panel's IP address and the login you use for its web page.",
+    "connect": "Connect",
+    "host": "IP address",
+    "username": "Username",
+    "password": "Password"
+  },
+  "device": { "panel": "AX PRO Panel", "zone": "Zone" }
+}

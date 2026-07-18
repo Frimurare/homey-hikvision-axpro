@@ -1,0 +1,10 @@
+{
+  "pair": {
+    "intro": "Ange AX PRO-panelens IP-adress och inloggningen du använder till dess webbsida.",
+    "connect": "Anslut",
+    "host": "IP-adress",
+    "username": "Användarnamn",
+    "password": "Lösenord"
+  },
+  "device": { "panel": "AX PRO-panel", "zone": "Zon" }
+}

@@ -31,7 +31,7 @@ class PanelDriver extends Homey.Driver {
 
       const store = { username: creds.username, password: creds.password };
       const devices = [{
-        name: 'AX PRO Panel',
+        name: this.homey.__('device.panel'),
         data: { id: `panel-${creds.host}`, host: creds.host, type: 'panel' },
         store,
         icon: ICON('panel'),
@@ -44,7 +44,7 @@ class PanelDriver extends Homey.Driver {
         const Z = it.Zone;
         const p = zoneProfile(Z.detectorType);
         devices.push({
-          name: Z.name || `Zone ${Z.id}`,
+          name: Z.name || `${this.homey.__('device.zone')} ${Z.id}`,
           data: { id: `zone-${creds.host}-${Z.id}`, host: creds.host, type: 'zone', zoneId: Z.id },
           store: { ...store, detectorType: Z.detectorType },
           icon: ICON(p.icon),

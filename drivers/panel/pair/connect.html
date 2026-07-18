@@ -1,4 +1,8 @@
 <script type="text/javascript">
+  function t(key, fallback) {
+    try { const v = Homey.__(key); return (v && v !== key) ? v : fallback; }
+    catch (e) { return fallback; }
+  }
   function submit() {
     const host = document.getElementById('host').value.trim();
     const username = document.getElementById('username').value.trim();
@@ -8,11 +12,17 @@
       .then(() => Homey.nextView())
       .catch((e) => { Homey.hideLoadingOverlay(); Homey.alert(String(e.message || e)); });
   }
+  Homey.ready(function () {
+    document.getElementById('intro').textContent = t('pair.intro', "Enter your AX PRO panel's IP address and login.");
+    document.getElementById('username').placeholder = t('pair.username', 'Username');
+    document.getElementById('password').placeholder = t('pair.password', 'Password');
+    document.getElementById('go').textContent = t('pair.connect', 'Connect');
+  });
 </script>
 <div style="padding:16px;font-family:sans-serif">
-  <p data-i18n="pair.intro">Enter your AX PRO panel's IP address and login (the account you use for the panel's web page).</p>
+  <p id="intro">Enter your AX PRO panel's IP address and login.</p>
   <input id="host" placeholder="192.168.1.50" style="width:100%;margin:6px 0;padding:8px"/>
-  <input id="username" placeholder="username" style="width:100%;margin:6px 0;padding:8px"/>
-  <input id="password" type="password" placeholder="password" style="width:100%;margin:6px 0;padding:8px"/>
-  <button onclick="submit()" style="width:100%;padding:10px;margin-top:8px">Connect</button>
+  <input id="username" placeholder="Username" style="width:100%;margin:6px 0;padding:8px"/>
+  <input id="password" type="password" placeholder="Password" style="width:100%;margin:6px 0;padding:8px"/>
+  <button id="go" onclick="submit()" style="width:100%;padding:10px;margin-top:8px">Connect</button>
 </div>

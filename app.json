@@ -1,20 +1,26 @@
 {
-  "id": "com.prudencia.hikvision-axpro",
+  "id": "se.manvarg.hikvision-axpro",
   "version": "0.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": ["local"],
   "name": { "en": "Hikvision AX PRO" },
-  "description": { "en": "Local control and monitoring for Hikvision AX PRO wireless alarm panels (DS-PWA96). Arm/disarm, per-detector temperature, door/contact, motion, tamper and battery." },
+  "description": {
+    "en": "Local control and monitoring for Hikvision AX PRO wireless alarm panels (DS-PWA96). Arm/disarm, per-detector temperature, door/contact, motion, tamper and battery. Built with ❤️ by Ulf Holmström.",
+    "sv": "Lokal styrning och övervakning av Hikvision AX PRO trådlösa larmpaneler (DS-PWA96). Till-/frånkoppling, temperatur per detektor, dörr/kontakt, rörelse, sabotage och batteri. Built with ❤️ by Ulf Holmström.",
+    "nl": "Lokale bediening en bewaking van Hikvision AX PRO draadloze alarmpanelen (DS-PWA96). In-/uitschakelen, temperatuur per detector, deur/contact, beweging, sabotage en batterij. Built with ❤️ by Ulf Holmström.",
+    "de": "Lokale Steuerung und Überwachung von Hikvision AX PRO Funk-Alarmzentralen (DS-PWA96). Scharf-/Unscharfschalten, Temperatur je Melder, Tür/Kontakt, Bewegung, Sabotage und Batterie. Built with ❤️ by Ulf Holmström.",
+    "fr": "Contrôle et surveillance en local des centrales d'alarme sans fil Hikvision AX PRO (DS-PWA96). Armement/désarmement, température par détecteur, porte/contact, mouvement, sabotage et batterie. Built with ❤️ by Ulf Holmström."
+  },
   "category": ["security"],
   "brandColor": "#E30613",
   "permissions": [],
-  "author": { "name": "Ulf Holmström", "email": "ulf@prudsec.se" },
+  "author": { "name": "Ulf Holmström", "email": "ulf@manvarg.se" },
   "images": { "small": "/assets/images/small.png", "large": "/assets/images/large.png" },
   "drivers": [
     {
       "id": "panel",
-      "name": { "en": "AX PRO Panel" },
+      "name": { "en": "AX PRO Panel", "sv": "AX PRO-panel", "nl": "AX PRO-paneel", "de": "AX PRO-Zentrale", "fr": "Centrale AX PRO" },
       "class": "homealarm",
       "capabilities": ["homealarm_state"],
       "images": { "small": "/drivers/panel/assets/images/small.png", "large": "/drivers/panel/assets/images/large.png" },
