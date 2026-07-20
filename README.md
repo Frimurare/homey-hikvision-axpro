@@ -23,11 +23,17 @@ Everything runs **locally on the Homey** — there is no cloud dependency and no
 
 - 🔎 **Auto-discovery** — connect once with the panel IP + login; the app lists the panel and every enrolled detector/peripheral to add.
 - 🎛️ **Alarm panel** — arm (away), arm stay (partial) and disarm straight from Homey, plus current arm state.
-- 🌡️ **Per-detector sensors** — temperature, battery level and tamper for every detector that reports them.
+- 🗂️ **Areas as devices** — every enabled area/partition becomes its own Homey device, so you can arm and disarm each area independently.
+- ⚡ **Flow cards** — trigger *detector alarmed* (with the detector name, type, area and — for PIR-CAM — a **snapshot image token**), *system armed* / *system disarmed*; conditions *system is armed* and *area is armed*; actions arm/disarm an area, bypass/unbypass a zone and sound the siren.
+- 📷 **PIR-CAM snapshots** — camera detectors capture a picture on alarm, shown on the device and available as a Flow image token.
+- 🌡️ **Per-detector sensors** — temperature, battery level and tamper for every detector that reports them, plus **low-battery** and **offline** alarms. Battery devices appear in Homey's battery overview.
+- 🔌 **Panel health** — mains-power-lost (`alarm_mains`) and tamper on the panel device.
 - 🚪🚶🔥 **Correct sensor type per detector** — motion, door/contact, smoke, glass-break, water leak, CO, gas, heat and panic are each mapped to the right Homey alarm capability, with a distinct icon.
 - 🧩 **Peripherals** — wireless keypads, external sirens, repeaters, card readers and relay/output modules.
+- ➕ **Add detectors later** — newly enrolled sensors appear the next time you run *Add device*; no need to remove or re-add the panel.
+- 🛠️ **Repair** — changed the panel's IP address or password? Use Homey's *Repair* on the panel device to update credentials without re-adding anything.
 - ♻️ **Shared connection** — all Homey devices for a panel share a single, reused login session (kind to the panel — it never gets flooded with logins).
-- 🌍 **Multilingual** — English, Svenska, Nederlands, Deutsch, Français (adapts to your Homey's language).
+- 🌍 **Multilingual** — 15 languages: English, Svenska, Deutsch, Français, Nederlands, Italiano, Norsk, Dansk, Українська, Ελληνικά, Español, Polski, Русский, 한국어, 中文 (adapts to your Homey's language).
 - 🔒 **Local only** — direct LAN/ISAPI communication, credentials stay on your Homey.
 
 ## Supported hardware

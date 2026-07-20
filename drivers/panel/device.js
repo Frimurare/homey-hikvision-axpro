@@ -2,13 +2,24 @@
 const Homey = require('homey');
 const { LOW_BATTERY } = require('../../lib/profiles');
 
-// device type -> exDevStatus list/item names
+// device type -> exDevStatus list/item names (fallback when data.list is absent)
 const PERIPHERAL_MAP = {
   keypad:     { list: 'KeypadList',     item: 'Keypad' },
   siren:      { list: 'SirenList',      item: 'Siren' },
   repeater:   { list: 'RepeaterList',   item: 'Repeater' },
   cardreader: { list: 'CardReaderList', item: 'CardReader' },
   output:     { list: 'OutputList',     item: 'Output' },
+};
+
+// exDevStatus list name -> item wrapper name (data.list from discovery wins,
+// so OutputMod devices resolve against OutputModList, not OutputList)
+const ITEM_BY_LIST = {
+  KeypadList:     'Keypad',
+  SirenList:      'Siren',
+  RepeaterList:   'Repeater',
+  CardReaderList: 'CardReader',
+  OutputList:     'Output',
+  OutputModList:  'OutputMod',
 };
 
 class AxProDevice extends Homey.Device {
@@ -64,6 +75,13 @@ class AxProDevice extends Homey.Device {
   }
 
   async _update(data) {
+    // Before the first poll completes, poller.latest is a truthy-but-empty
+    // object. Skip instead of flashing every device "Offline" on app start.
+    const noData = Object.keys(data.zones || {}).length === 0
+      && Object.keys(data.subSystems || {}).length === 0
+      && Object.keys(data.exDev || {}).length === 0;
+    if (noData) return;
+
     if (this._type === 'panel') {
       const subs = Object.values(data.subSystems || {});
       let state = 'disarmed';
@@ -113,9 +131,11 @@ class AxProDevice extends Homey.Device {
     // peripheral (keypad/siren/repeater/cardreader/output)
     const map = PERIPHERAL_MAP[this._type];
     if (!map) return;
-    const { devId } = this.getData();
-    const list = (data.exDev || {})[map.list] || [];
-    const rec = list.map((it) => it[map.item] || Object.values(it)[0]).find((d) => d && d.id === devId);
+    const { devId, list: dataList } = this.getData();
+    const listName = dataList || map.list;
+    const itemName = ITEM_BY_LIST[listName] || map.item;
+    const list = (data.exDev || {})[listName] || [];
+    const rec = list.map((it) => it[itemName] || Object.values(it)[0]).find((d) => d && d.id === devId);
     if (!rec) { await this.setUnavailable('Offline').catch(() => {}); return; }
     await this.setAvailable().catch(() => {});
     if (rec.temperature !== undefined) this._set('measure_temperature', rec.temperature);
@@ -129,6 +149,7 @@ class AxProDevice extends Homey.Device {
 
   async onDeleted() {
     if (this._unsub) this._unsub();
+    if (this._img) await this._img.unregister().catch(() => {});
     this.homey.app.releasePoller(this._host);
   }
 }

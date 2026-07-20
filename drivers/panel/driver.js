@@ -65,6 +65,9 @@ class PanelDriver extends Homey.Driver {
           await d.setStoreValue('password', password).catch(() => {});
         }
       }
+      // apply to the running poller too, so it re-logs-in with the new
+      // credentials immediately instead of hammering the panel with the old ones
+      this.homey.app.updatePollerCredentials(oldHost, { host, username, password });
       return true;
     });
   }
@@ -72,12 +75,17 @@ class PanelDriver extends Homey.Driver {
   async _discover(creds) {
     const api = new HikAxPro(creds);
     await api.login();
-    const [z, ex, s] = await Promise.all([
-      api.zoneStatus(),
-      api.exDevStatus().catch(() => null),
-      api.subSystems().catch(() => null),
-    ]);
-    await api.logout();
+    let z; let ex; let s;
+    try {
+      [z, ex, s] = await Promise.all([
+        api.zoneStatus(),
+        api.exDevStatus().catch(() => null),
+        api.subSystems().catch(() => null),
+      ]);
+    } finally {
+      // always release the panel session, even when discovery throws
+      await api.logout().catch(() => {});
+    }
 
     const store = { host: creds.host, username: creds.username, password: creds.password };
     const devices = [{
@@ -107,14 +115,17 @@ class PanelDriver extends Homey.Driver {
     for (const it of (z.ZoneList || [])) {
       const Z = it.Zone;
       const p = zoneProfile(Z.detectorType);
-      devices.push({
+      const dev = {
         name: Z.name || `${this.homey.__('device.zone')} ${Z.id}`,
         data: { id: `zone-${creds.host}-${Z.id}`, host: creds.host, type: 'zone', zoneId: Z.id },
         store: { ...store, detectorType: Z.detectorType, cam: !!p.cam },
         icon: ICON(p.icon),
         class: p.cls,
         capabilities: p.caps,
-      });
+      };
+      // battery-powered detectors show up in Homey's battery overview
+      if (p.caps.includes('measure_battery')) dev.energy = { batteries: ['OTHER'] };
+      devices.push(dev);
     }
 
     // Peripherals (keypads, sirens, repeaters, outputs, card readers)
@@ -124,14 +135,27 @@ class PanelDriver extends Homey.Driver {
         const D = it[p.item] || Object.values(it)[0];
         if (!D) continue;
         const caps = p.caps.filter((c) => c !== 'measure_temperature' || D.temperature !== undefined);
-        devices.push({
+        // OutputList and OutputModList both map to type "output" (same control),
+        // so the id must be distinct per list and the device must remember which
+        // list it came from (device.js reads data.list for status lookups).
+        const idPrefix = p.list === 'OutputModList' ? 'outputmod' : p.type;
+        const dev = {
           name: D.name || `${p.type} ${D.id}`,
-          data: { id: `${p.type}-${creds.host}-${D.id}`, host: creds.host, type: p.type, devId: D.id },
+          data: {
+            id: `${idPrefix}-${creds.host}-${D.id}`,
+            host: creds.host,
+            type: p.type,
+            devId: D.id,
+            list: p.list,
+          },
           store,
           icon: ICON(p.icon),
           class: p.cls,
           capabilities: caps,
-        });
+        };
+        // battery-backed peripherals show up in Homey's battery overview
+        if (caps.includes('measure_battery')) dev.energy = { batteries: ['OTHER'] };
+        devices.push(dev);
       }
     }
 
