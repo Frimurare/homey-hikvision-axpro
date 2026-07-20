@@ -2,60 +2,55 @@
 
 Agreed feature set (aligned 2026-07-20).
 
-**Status:** A–H shipped in **v1.1.0 BETA** (validates at publish level). Feature A's snapshot
-payload keying still needs verification against a real armed alarm (open the alertStream, arm,
-trigger a PIR-CAM, confirm the JPEG/JSON format) — done in one clean reused session. Feature I
-(cameras) is deferred to post-summer per plan.
+**Status:** **A–H are DONE — shipped in v1.1.0 BETA "Aegis"** (validates at publish level;
+released on GitHub as `v1.1.0-beta.1`). The only remaining item is **I (Hikvision cameras)**,
+deferred to post-summer per plan.
 
-## Planned features (A–I)
+One follow-up on A: the snapshot *plumbing* ships, but the exact PIR-CAM payload keying still
+needs a one-time check against a real armed alarm (open the alertStream, arm, trigger a
+PIR-CAM, confirm the JPEG/JSON format) — to be done in a single clean, reused session.
 
-### A. PIR-CAM snapshot on real alarm ⭐
-Give `pircam` detectors (Hall Nere, Gästrum, Edwins Rum) a live image in Homey when they
-trigger. Confirmed mechanism: panel pushes the capture over `/ISAPI/Event/notification/alertStream`.
-See detailed notes under *"v1.1 detail"* below. **Note: on-demand test capture is NOT
-possible locally on this firmware (documented dead-end) — images are alarm-driven only.**
+## Feature status (A–I)
 
-### B. Areas (partitions) as their own devices ⭐
-The panel has up to 14 areas (Sånglärksvägen, Garage, gästrum, Skalskydd…). Expose **each
-enabled area as its own alarm device** so you can arm/disarm one area independently instead
-of only the whole system. Read from `/ISAPI/SecurityCP/status/subSystems`; control via the
-per-area arm/disarm endpoints. Biggest single upgrade for multi-area panels.
+### ✅ A. PIR-CAM snapshot on real alarm ⭐ — DONE (payload check pending)
+`pircam` detectors get a live image via the shared `alertStream` listener; the *"A detector
+alarmed"* trigger carries a snapshot token, and PIR-CAM devices get a camera image tile.
+Confirmed mechanism: panel pushes the capture over `/ISAPI/Event/notification/alertStream`.
+**Note:** on-demand test capture is NOT possible locally on this firmware (documented
+dead-end) — images are alarm-driven only. See *"v1.1 detail"* below for the pending check.
 
-### C. Richer flow cards ⭐
-- **Trigger** "A detector alarmed" — tokens: detector name, type, area, snapshot (also the
-  vehicle for feature A).
-- **Trigger** "System armed / disarmed" — with **by what** (keypad / keyfob / app) so flows
-  like *disarmed by keyfob → welcome-home scene* are possible.
-- **Conditions** — "system is armed", "area X is armed", "zone is bypassed".
-- **Actions** — arm/disarm a specific area, bypass/unbypass a zone, trigger/silence siren.
+### ✅ B. Areas (partitions) as their own devices ⭐ — DONE
+Each enabled area is now its own Homey alarm device (arm/disarm per area), read from
+`/ISAPI/SecurityCP/status/subSystems` and controlled via the per-area arm/disarm endpoints.
 
-### D. Panel health as sensors
-Surface host-status fields already available: **mains power (ACConnect) → power-loss alarm**,
-panel tamper, fault count, Wi-Fi / cellular / network state. "Mains lost → notify" is high-value
-and trivial (data already polled).
+### ✅ C. Richer flow cards ⭐ — DONE
+- **Triggers:** "A detector alarmed" (tokens: name, type, area, snapshot), "System armed"
+  (with mode), "System disarmed".
+- **Conditions:** "System is armed", "Area is armed".
+- **Actions:** arm area, disarm area, bypass/restore a zone, sound/silence the siren.
 
-### E. Low battery + detector offline
-`alarm_battery` when a detector drops below threshold, and an "offline" alarm when a detector
-loses contact with the panel. Standard maintenance notifications users expect.
+### ✅ D. Panel health as sensors — DONE
+New **Mains power lost** capability (`alarm_mains`, from `ACConnect`) plus panel **tamper**
+on the panel device — flow on a power cut.
 
-### F. Repair flow (change password / IP without removing devices)
-Homey's built-in device **Repair** wizard: if the panel password or IP changes, every AX PRO
-device stops working at once. Repair lets the user re-enter the new credentials on a device
-and update the stored login **without deleting and re-adding everything**. The rescue button
-for a password/IP change. (Pairs with H.)
+### ✅ E. Low battery + detector offline — DONE
+`alarm_battery` when a detector drops below 20 %; detectors go unavailable ("offline") when
+they lose contact with the panel.
 
-### G. More languages
-Expand from 5 → 10 languages to match the OpenEye app (add no, da, uk, el, it). Same
-localisation approach; low effort, wider reach.
+### ✅ F. Repair flow (change password / IP without removing devices) — DONE
+Homey's device **Repair** wizard re-enters the panel IP/password on a device and propagates
+the new credentials to every device on that panel — no delete-and-re-add. (Pairs with H.)
 
-### H. Add more detectors without re-adding the panel
-When "Add device → Hikvision AX PRO" runs and a panel is already paired, **skip the login
-step** (reuse stored credentials) and go straight to the device list, showing **only
-not-yet-added** detectors. So newly enrolled sensors (e.g. a new garage detector) appear
-instantly with no IP/password re-entry and no duplicates. (Pairs with F: F fixes existing
-devices, H adds new ones — the user should never have to tear down and rebuild.)
+### ✅ G. Languages — DONE (15 languages)
+Expanded to **15 languages** — en, sv, de, fr, nl, it, no, da, uk, el, es, pl, ru, ko, zh —
+covering all of Homey's UI languages. Homey auto-selects.
 
-### I. Hikvision cameras (post-summer, strategic)
+### ✅ H. Add more detectors without re-adding the panel — DONE
+Pairing reuses the stored login, **skips the login step**, and lists **only not-yet-added**
+detectors, so newly enrolled sensors just appear — no IP/password re-entry, no duplicates.
+(Pairs with F: F fixes existing devices, H adds new ones — never tear down and rebuild.)
+
+### ⏳ I. Hikvision cameras (post-summer, strategic) — NOT STARTED
 Ulf has many Hikvision cameras. Reuse the **OpenEye app's proven pattern**: camera as a Homey
 device with a snapshot tile (`/ISAPI/Streaming/channels/101/picture`) + smart-detection events
 (motion, line-cross, intrusion, face) as flow triggers via the same `alertStream` mechanism the
