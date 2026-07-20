@@ -1,0 +1,14 @@
+{
+  "pair": {
+    "intro": "AX PRO 패널의 IP 주소와 웹 페이지에 사용하는 로그인 정보를 입력하세요.",
+    "connect": "연결",
+    "host": "IP 주소",
+    "username": "사용자 이름",
+    "password": "비밀번호"
+  },
+  "device": {
+    "panel": "AX PRO 패널",
+    "zone": "존",
+    "area": "구역"
+  }
+}

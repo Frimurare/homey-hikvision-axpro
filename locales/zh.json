@@ -1,0 +1,14 @@
+{
+  "pair": {
+    "intro": "输入 AX PRO 主机的 IP 地址以及您在其网页上使用的登录信息。",
+    "connect": "连接",
+    "host": "IP 地址",
+    "username": "用户名",
+    "password": "密码"
+  },
+  "device": {
+    "panel": "AX PRO 主机",
+    "zone": "防区",
+    "area": "区域"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "pair": {
+    "intro": "Wprowadź adres IP centrali AX PRO oraz login używany na jej stronie internetowej.",
+    "connect": "Połącz",
+    "host": "Adres IP",
+    "username": "Nazwa użytkownika",
+    "password": "Hasło"
+  },
+  "device": {
+    "panel": "Centrala AX PRO",
+    "zone": "Strefa",
+    "area": "Strefa"
+  }
+}

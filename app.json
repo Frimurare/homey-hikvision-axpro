@@ -3,8 +3,12 @@
   "version": "1.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "platforms": ["local"],
-  "name": { "en": "Hikvision AX PRO" },
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Hikvision AX PRO"
+  },
   "description": {
     "en": "Local control and monitoring for Hikvision AX PRO wireless alarm panels. Arm/disarm per area, per-detector temperature, door/contact, motion, tamper and battery, panel health (mains/fault), PIR-CAM snapshots on alarm, and rich Flow cards. Built with ❤️ by Ulf Holmström.",
     "sv": "Lokal styrning och övervakning av Hikvision AX PRO trådlösa larmpaneler. Till-/frånkoppling per område, temperatur per detektor, dörr/kontakt, rörelse, sabotage och batteri, panelhälsa (nätström/fel), PIR-CAM-bilder vid larm och rika Flow-kort. Built with ❤️ by Ulf Holmström.",
@@ -15,17 +19,46 @@
     "no": "Lokal styring og overvåking av Hikvision AX PRO trådløse alarmsentraler. På-/avslåing per område, temperatur per detektor, dør/kontakt, bevegelse, sabotasje og batteri, sentralstatus (nett/feil), PIR-CAM-øyeblikksbilder ved alarm og rike Flow-kort.",
     "da": "Lokal styring og overvågning af Hikvision AX PRO trådløse alarmcentraler. Til-/frakobling pr. område, temperatur pr. detektor, dør/kontakt, bevægelse, sabotage og batteri, centralstatus (net/fejl), PIR-CAM-øjebliksbilleder ved alarm og rige Flow-kort.",
     "uk": "Локальне керування та моніторинг бездротових охоронних панелей Hikvision AX PRO. Постановка/зняття за розділами, температура кожного датчика, двері/контакт, рух, саботаж і батарея, стан панелі (мережа/несправність), знімки PIR-CAM під час тривоги та розширені картки Flow.",
-    "el": "Τοπικός έλεγχος και παρακολούθηση ασύρματων πινάκων συναγερμού Hikvision AX PRO. Όπλιση/αφόπλιση ανά περιοχή, θερμοκρασία ανά ανιχνευτή, πόρτα/επαφή, κίνηση, παραβίαση και μπαταρία, κατάσταση πίνακα (δίκτυο/βλάβη), στιγμιότυπα PIR-CAM σε συναγερμό και πλούσιες κάρτες Flow."
+    "el": "Τοπικός έλεγχος και παρακολούθηση ασύρματων πινάκων συναγερμού Hikvision AX PRO. Όπλιση/αφόπλιση ανά περιοχή, θερμοκρασία ανά ανιχνευτή, πόρτα/επαφή, κίνηση, παραβίαση και μπαταρία, κατάσταση πίνακα (δίκτυο/βλάβη), στιγμιότυπα PIR-CAM σε συναγερμό και πλούσιες κάρτες Flow.",
+    "es": "Control y monitorización local de centrales de alarma inalámbricas Hikvision AX PRO. Armado/desarmado por área, temperatura por detector, puerta/contacto, movimiento, sabotaje y batería, estado de la central (red/avería), instantáneas PIR-CAM en alarma y tarjetas de Flujo avanzadas.",
+    "pl": "Lokalne sterowanie i monitorowanie bezprzewodowych central alarmowych Hikvision AX PRO. Uzbrajanie/rozbrajanie na strefę, temperatura każdego czujnika, drzwi/kontaktron, ruch, sabotaż i bateria, stan centrali (zasilanie/awaria), zdjęcia PIR-CAM przy alarmie oraz rozbudowane karty Flow.",
+    "ru": "Локальное управление и мониторинг беспроводных охранных панелей Hikvision AX PRO. Постановка/снятие по разделам, температура каждого датчика, дверь/контакт, движение, саботаж и батарея, состояние панели (сеть/неисправность), снимки PIR-CAM при тревоге и расширенные карточки Flow.",
+    "ko": "Hikvision AX PRO 무선 경보 패널의 로컬 제어 및 모니터링. 구역별 경계/해제, 감지기별 온도, 문/접점, 움직임, 탬퍼 및 배터리, 패널 상태(전원/고장), 경보 시 PIR-CAM 스냅샷, 풍부한 Flow 카드.",
+    "zh": "本地控制和监控 Hikvision AX PRO 无线报警主机。按区域布防/撤防、每个探测器温度、门/触点、移动、防拆和电池、主机状态（市电/故障）、报警时 PIR-CAM 快照，以及丰富的 Flow 卡片。"
   },
-  "category": ["security"],
+  "category": [
+    "security"
+  ],
   "brandColor": "#E30613",
   "permissions": [],
-  "author": { "name": "Ulf Holmström", "email": "ulf@manvarg.se" },
-  "images": { "small": "/assets/images/small.png", "large": "/assets/images/large.png" },
+  "author": {
+    "name": "Ulf Holmström",
+    "email": "ulf@manvarg.se"
+  },
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png"
+  },
   "capabilities": {
     "alarm_mains": {
       "type": "boolean",
-      "title": { "en": "Mains power lost", "sv": "Nätström förlorad", "nl": "Netstroom verloren", "de": "Netzstrom verloren", "fr": "Secteur perdu", "it": "Rete elettrica assente", "no": "Nettstrøm tapt", "da": "Netstrøm mistet", "uk": "Втрата мережі", "el": "Απώλεια δικτύου" },
+      "title": {
+        "en": "Mains power lost",
+        "sv": "Nätström förlorad",
+        "nl": "Netstroom verloren",
+        "de": "Netzstrom verloren",
+        "fr": "Secteur perdu",
+        "it": "Rete elettrica assente",
+        "no": "Nettstrøm tapt",
+        "da": "Netstrøm mistet",
+        "uk": "Втрата мережі",
+        "el": "Απώλεια δικτύου",
+        "es": "Alimentación de red perdida",
+        "pl": "Utrata zasilania sieciowego",
+        "ru": "Потеря сети",
+        "ko": "주 전원 손실",
+        "zh": "市电断电"
+      },
       "getable": true,
       "setable": false,
       "uiComponent": "sensor",
@@ -36,84 +69,544 @@
     "triggers": [
       {
         "id": "detector_alarmed",
-        "title": { "en": "A detector alarmed", "sv": "En detektor larmade", "nl": "Een detector sloeg alarm", "de": "Ein Melder hat ausgelöst", "fr": "Un détecteur a déclenché", "it": "Un rilevatore è scattato", "no": "En detektor utløste", "da": "En detektor udløste", "uk": "Спрацював датчик", "el": "Ενεργοποιήθηκε ανιχνευτής" },
-        "hint": { "en": "Fires when any detector goes into alarm. Carries the detector name, type, area and (for PIR-CAM detectors) a snapshot.", "sv": "Utlöses när en detektor larmar. Bär med detektorns namn, typ, område och (för PIR-CAM) en ögonblicksbild." },
+        "title": {
+          "en": "A detector alarmed",
+          "sv": "En detektor larmade",
+          "nl": "Een detector sloeg alarm",
+          "de": "Ein Melder hat ausgelöst",
+          "fr": "Un détecteur a déclenché",
+          "it": "Un rilevatore è scattato",
+          "no": "En detektor utløste",
+          "da": "En detektor udløste",
+          "uk": "Спрацював датчик",
+          "el": "Ενεργοποιήθηκε ανιχνευτής",
+          "es": "Un detector se activó",
+          "pl": "Czujnik wywołał alarm",
+          "ru": "Сработал датчик",
+          "ko": "감지기가 경보함",
+          "zh": "探测器报警"
+        },
+        "hint": {
+          "en": "Fires when any detector goes into alarm. Carries the detector name, type, area and (for PIR-CAM detectors) a snapshot.",
+          "sv": "Utlöses när en detektor larmar. Bär med detektorns namn, typ, område och (för PIR-CAM) en ögonblicksbild.",
+          "es": "Se activa cuando cualquier detector entra en alarma. Incluye el nombre del detector, tipo, área y (para detectores PIR-CAM) una instantánea.",
+          "pl": "Wyzwalane, gdy dowolny czujnik wywoła alarm. Zawiera nazwę czujnika, typ, strefę oraz (dla czujników PIR-CAM) zdjęcie.",
+          "ru": "Срабатывает при тревоге любого датчика. Содержит имя датчика, тип, раздел и (для PIR-CAM) снимок.",
+          "ko": "감지기가 경보 상태가 되면 실행됩니다. 감지기 이름, 유형, 구역 및 (PIR-CAM의 경우) 스냅샷을 전달합니다.",
+          "zh": "任意探测器报警时触发。携带探测器名称、类型、区域以及（PIR-CAM 探测器的）快照。"
+        },
         "tokens": [
-          { "name": "name", "type": "string", "title": { "en": "Detector", "sv": "Detektor" }, "example": "Hall" },
-          { "name": "type", "type": "string", "title": { "en": "Type", "sv": "Typ" }, "example": "motion" },
-          { "name": "area", "type": "number", "title": { "en": "Area", "sv": "Område" }, "example": 1 },
-          { "name": "snapshot", "type": "image", "title": { "en": "Snapshot", "sv": "Ögonblicksbild" } }
+          {
+            "name": "name",
+            "type": "string",
+            "title": {
+              "en": "Detector",
+              "sv": "Detektor",
+              "es": "Detector",
+              "pl": "Czujnik",
+              "ru": "Датчик",
+              "ko": "감지기",
+              "zh": "探测器"
+            },
+            "example": "Hall"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "title": {
+              "en": "Type",
+              "sv": "Typ",
+              "es": "Tipo",
+              "pl": "Typ",
+              "ru": "Тип",
+              "ko": "유형",
+              "zh": "类型"
+            },
+            "example": "motion"
+          },
+          {
+            "name": "area",
+            "type": "number",
+            "title": {
+              "en": "Area",
+              "sv": "Område",
+              "es": "Área",
+              "pl": "Strefa",
+              "ru": "Раздел",
+              "ko": "구역",
+              "zh": "区域"
+            },
+            "example": 1
+          },
+          {
+            "name": "snapshot",
+            "type": "image",
+            "title": {
+              "en": "Snapshot",
+              "sv": "Ögonblicksbild",
+              "es": "Instantánea",
+              "pl": "Zdjęcie",
+              "ru": "Снимок",
+              "ko": "스냅샷",
+              "zh": "快照"
+            }
+          }
         ]
       },
       {
         "id": "system_armed",
-        "title": { "en": "The system was armed", "sv": "Systemet tillkopplades", "nl": "Het systeem werd ingeschakeld", "de": "Das System wurde scharf geschaltet", "fr": "Le système a été armé", "it": "Il sistema è stato inserito", "no": "Systemet ble påslått", "da": "Systemet blev tilkoblet", "uk": "Систему поставлено на охорону", "el": "Το σύστημα οπλίστηκε" },
-        "tokens": [ { "name": "mode", "type": "string", "title": { "en": "Mode", "sv": "Läge" }, "example": "away" } ]
+        "title": {
+          "en": "The system was armed",
+          "sv": "Systemet tillkopplades",
+          "nl": "Het systeem werd ingeschakeld",
+          "de": "Das System wurde scharf geschaltet",
+          "fr": "Le système a été armé",
+          "it": "Il sistema è stato inserito",
+          "no": "Systemet ble påslått",
+          "da": "Systemet blev tilkoblet",
+          "uk": "Систему поставлено на охорону",
+          "el": "Το σύστημα οπλίστηκε",
+          "es": "El sistema se armó",
+          "pl": "System uzbrojony",
+          "ru": "Система поставлена на охрану",
+          "ko": "시스템이 경계됨",
+          "zh": "系统已布防"
+        },
+        "tokens": [
+          {
+            "name": "mode",
+            "type": "string",
+            "title": {
+              "en": "Mode",
+              "sv": "Läge",
+              "es": "Modo",
+              "pl": "Tryb",
+              "ru": "Режим",
+              "ko": "모드",
+              "zh": "模式"
+            },
+            "example": "away"
+          }
+        ]
       },
       {
         "id": "system_disarmed",
-        "title": { "en": "The system was disarmed", "sv": "Systemet frånkopplades", "nl": "Het systeem werd uitgeschakeld", "de": "Das System wurde unscharf geschaltet", "fr": "Le système a été désarmé", "it": "Il sistema è stato disinserito", "no": "Systemet ble avslått", "da": "Systemet blev frakoblet", "uk": "Систему знято з охорони", "el": "Το σύστημα αφοπλίστηκε" }
+        "title": {
+          "en": "The system was disarmed",
+          "sv": "Systemet frånkopplades",
+          "nl": "Het systeem werd uitgeschakeld",
+          "de": "Das System wurde unscharf geschaltet",
+          "fr": "Le système a été désarmé",
+          "it": "Il sistema è stato disinserito",
+          "no": "Systemet ble avslått",
+          "da": "Systemet blev frakoblet",
+          "uk": "Систему знято з охорони",
+          "el": "Το σύστημα αφοπλίστηκε",
+          "es": "El sistema se desarmó",
+          "pl": "System rozbrojony",
+          "ru": "Система снята с охраны",
+          "ko": "시스템이 해제됨",
+          "zh": "系统已撤防"
+        }
       }
     ],
     "conditions": [
       {
         "id": "system_is_armed",
-        "title": { "en": "The system !{{is|is not}} armed", "sv": "Systemet !{{är|är inte}} tillkopplat", "nl": "Het systeem !{{is|is niet}} ingeschakeld", "de": "Das System !{{ist|ist nicht}} scharf", "fr": "Le système !{{est|n'est pas}} armé", "it": "Il sistema !{{è|non è}} inserito", "no": "Systemet !{{er|er ikke}} påslått", "da": "Systemet !{{er|er ikke}} tilkoblet", "uk": "Систему !{{поставлено|не поставлено}} на охорону", "el": "Το σύστημα !{{είναι|δεν είναι}} οπλισμένο" }
+        "title": {
+          "en": "The system !{{is|is not}} armed",
+          "sv": "Systemet !{{är|är inte}} tillkopplat",
+          "nl": "Het systeem !{{is|is niet}} ingeschakeld",
+          "de": "Das System !{{ist|ist nicht}} scharf",
+          "fr": "Le système !{{est|n'est pas}} armé",
+          "it": "Il sistema !{{è|non è}} inserito",
+          "no": "Systemet !{{er|er ikke}} påslått",
+          "da": "Systemet !{{er|er ikke}} tilkoblet",
+          "uk": "Систему !{{поставлено|не поставлено}} на охорону",
+          "el": "Το σύστημα !{{είναι|δεν είναι}} οπλισμένο",
+          "es": "El sistema !{{está|no está}} armado",
+          "pl": "System !{{jest|nie jest}} uzbrojony",
+          "ru": "Система !{{на охране|не на охране}}",
+          "ko": "시스템이 !{{경계됨|경계되지 않음}}",
+          "zh": "系统!{{已|未}}布防"
+        }
       },
       {
         "id": "area_is_armed",
-        "title": { "en": "Area !{{is|is not}} armed", "sv": "Området !{{är|är inte}} tillkopplat", "nl": "Gebied !{{is|is niet}} ingeschakeld", "de": "Bereich !{{ist|ist nicht}} scharf", "fr": "La zone !{{est|n'est pas}} armée", "it": "L'area !{{è|non è}} inserita", "no": "Området !{{er|er ikke}} påslått", "da": "Området !{{er|er ikke}} tilkoblet", "uk": "Розділ !{{поставлено|не поставлено}} на охорону", "el": "Η περιοχή !{{είναι|δεν είναι}} οπλισμένη" },
-        "titleFormatted": { "en": "Area [[area]] !{{is|is not}} armed", "sv": "Området [[area]] !{{är|är inte}} tillkopplat" },
-        "args": [ { "name": "area", "type": "autocomplete", "title": { "en": "Area", "sv": "Område" } } ]
+        "title": {
+          "en": "Area !{{is|is not}} armed",
+          "sv": "Området !{{är|är inte}} tillkopplat",
+          "nl": "Gebied !{{is|is niet}} ingeschakeld",
+          "de": "Bereich !{{ist|ist nicht}} scharf",
+          "fr": "La zone !{{est|n'est pas}} armée",
+          "it": "L'area !{{è|non è}} inserita",
+          "no": "Området !{{er|er ikke}} påslått",
+          "da": "Området !{{er|er ikke}} tilkoblet",
+          "uk": "Розділ !{{поставлено|не поставлено}} на охорону",
+          "el": "Η περιοχή !{{είναι|δεν είναι}} οπλισμένη",
+          "es": "El área !{{está|no está}} armada",
+          "pl": "Strefa !{{jest|nie jest}} uzbrojona",
+          "ru": "Раздел !{{на охране|не на охране}}",
+          "ko": "구역이 !{{경계됨|경계되지 않음}}",
+          "zh": "区域!{{已|未}}布防"
+        },
+        "titleFormatted": {
+          "en": "Area [[area]] !{{is|is not}} armed",
+          "sv": "Området [[area]] !{{är|är inte}} tillkopplat",
+          "es": "El área [[area]] !{{está|no está}} armada",
+          "pl": "Strefa [[area]] !{{jest|nie jest}} uzbrojona",
+          "ru": "Раздел [[area]] !{{на охране|не на охране}}",
+          "ko": "구역 [[area]]이(가) !{{경계됨|경계되지 않음}}",
+          "zh": "区域 [[area]]!{{已|未}}布防"
+        },
+        "args": [
+          {
+            "name": "area",
+            "type": "autocomplete",
+            "title": {
+              "en": "Area",
+              "sv": "Område",
+              "es": "Área",
+              "pl": "Strefa",
+              "ru": "Раздел",
+              "ko": "구역",
+              "zh": "区域"
+            }
+          }
+        ]
       }
     ],
     "actions": [
       {
         "id": "arm_area",
-        "title": { "en": "Arm an area", "sv": "Tillkoppla ett område", "nl": "Een gebied inschakelen", "de": "Bereich scharf schalten", "fr": "Armer une zone", "it": "Inserisci un'area", "no": "Slå på et område", "da": "Tilkobl et område", "uk": "Поставити розділ на охорону", "el": "Όπλιση περιοχής" },
-        "titleFormatted": { "en": "Arm area [[area]] ([[mode]])", "sv": "Tillkoppla område [[area]] ([[mode]])" },
+        "title": {
+          "en": "Arm an area",
+          "sv": "Tillkoppla ett område",
+          "nl": "Een gebied inschakelen",
+          "de": "Bereich scharf schalten",
+          "fr": "Armer une zone",
+          "it": "Inserisci un'area",
+          "no": "Slå på et område",
+          "da": "Tilkobl et område",
+          "uk": "Поставити розділ на охорону",
+          "el": "Όπλιση περιοχής",
+          "es": "Armar un área",
+          "pl": "Uzbrój strefę",
+          "ru": "Поставить раздел на охрану",
+          "ko": "구역 경계",
+          "zh": "布防一个区域"
+        },
+        "titleFormatted": {
+          "en": "Arm area [[area]] ([[mode]])",
+          "sv": "Tillkoppla område [[area]] ([[mode]])",
+          "es": "Armar área [[area]] ([[mode]])",
+          "pl": "Uzbrój strefę [[area]] ([[mode]])",
+          "ru": "Поставить раздел [[area]] на охрану ([[mode]])",
+          "ko": "구역 [[area]] 경계 ([[mode]])",
+          "zh": "布防区域 [[area]]（[[mode]]）"
+        },
         "args": [
-          { "name": "area", "type": "autocomplete", "title": { "en": "Area", "sv": "Område" } },
-          { "name": "mode", "type": "dropdown", "title": { "en": "Mode", "sv": "Läge" }, "values": [ { "id": "away", "title": { "en": "Away", "sv": "Borta" } }, { "id": "stay", "title": { "en": "Stay", "sv": "Hemma" } } ] }
+          {
+            "name": "area",
+            "type": "autocomplete",
+            "title": {
+              "en": "Area",
+              "sv": "Område",
+              "es": "Área",
+              "pl": "Strefa",
+              "ru": "Раздел",
+              "ko": "구역",
+              "zh": "区域"
+            }
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode",
+              "sv": "Läge",
+              "es": "Modo",
+              "pl": "Tryb",
+              "ru": "Режим",
+              "ko": "모드",
+              "zh": "模式"
+            },
+            "values": [
+              {
+                "id": "away",
+                "title": {
+                  "en": "Away",
+                  "sv": "Borta",
+                  "es": "Fuera",
+                  "pl": "Wyjście",
+                  "ru": "Полная",
+                  "ko": "외출",
+                  "zh": "离家"
+                }
+              },
+              {
+                "id": "stay",
+                "title": {
+                  "en": "Stay",
+                  "sv": "Hemma",
+                  "es": "En casa",
+                  "pl": "Dom",
+                  "ru": "Периметр",
+                  "ko": "재실",
+                  "zh": "在家"
+                }
+              }
+            ]
+          }
         ]
       },
       {
         "id": "disarm_area",
-        "title": { "en": "Disarm an area", "sv": "Frånkoppla ett område", "nl": "Een gebied uitschakelen", "de": "Bereich unscharf schalten", "fr": "Désarmer une zone", "it": "Disinserisci un'area", "no": "Slå av et område", "da": "Frakobl et område", "uk": "Зняти розділ з охорони", "el": "Αφόπλιση περιοχής" },
-        "titleFormatted": { "en": "Disarm area [[area]]", "sv": "Frånkoppla område [[area]]" },
-        "args": [ { "name": "area", "type": "autocomplete", "title": { "en": "Area", "sv": "Område" } } ]
+        "title": {
+          "en": "Disarm an area",
+          "sv": "Frånkoppla ett område",
+          "nl": "Een gebied uitschakelen",
+          "de": "Bereich unscharf schalten",
+          "fr": "Désarmer une zone",
+          "it": "Disinserisci un'area",
+          "no": "Slå av et område",
+          "da": "Frakobl et område",
+          "uk": "Зняти розділ з охорони",
+          "el": "Αφόπλιση περιοχής",
+          "es": "Desarmar un área",
+          "pl": "Rozbrój strefę",
+          "ru": "Снять раздел с охраны",
+          "ko": "구역 해제",
+          "zh": "撤防一个区域"
+        },
+        "titleFormatted": {
+          "en": "Disarm area [[area]]",
+          "sv": "Frånkoppla område [[area]]",
+          "es": "Desarmar área [[area]]",
+          "pl": "Rozbrój strefę [[area]]",
+          "ru": "Снять раздел [[area]] с охраны",
+          "ko": "구역 [[area]] 해제",
+          "zh": "撤防区域 [[area]]"
+        },
+        "args": [
+          {
+            "name": "area",
+            "type": "autocomplete",
+            "title": {
+              "en": "Area",
+              "sv": "Område",
+              "es": "Área",
+              "pl": "Strefa",
+              "ru": "Раздел",
+              "ko": "구역",
+              "zh": "区域"
+            }
+          }
+        ]
       },
       {
         "id": "bypass_zone",
-        "title": { "en": "Bypass / restore a zone", "sv": "Bypassa / återställ en zon", "nl": "Zone overbruggen / herstellen", "de": "Zone überbrücken / wiederherstellen", "fr": "Exclure / réintégrer une zone", "it": "Escludi / ripristina una zona", "no": "Forbikoble / gjenopprett en sone", "da": "Bypass / gendan en zone", "uk": "Обхід / відновлення зони", "el": "Παράκαμψη / επαναφορά ζώνης" },
-        "titleFormatted": { "en": "[[state]] zone [[zone]]", "sv": "[[state]] zon [[zone]]" },
+        "title": {
+          "en": "Bypass / restore a zone",
+          "sv": "Bypassa / återställ en zon",
+          "nl": "Zone overbruggen / herstellen",
+          "de": "Zone überbrücken / wiederherstellen",
+          "fr": "Exclure / réintégrer une zone",
+          "it": "Escludi / ripristina una zona",
+          "no": "Forbikoble / gjenopprett en sone",
+          "da": "Bypass / gendan en zone",
+          "uk": "Обхід / відновлення зони",
+          "el": "Παράκαμψη / επαναφορά ζώνης",
+          "es": "Anular / restaurar una zona",
+          "pl": "Pomiń / przywróć strefę",
+          "ru": "Обход / восстановление зоны",
+          "ko": "구역 우회/복구",
+          "zh": "旁路/恢复区域"
+        },
+        "titleFormatted": {
+          "en": "[[state]] zone [[zone]]",
+          "sv": "[[state]] zon [[zone]]",
+          "es": "[[state]] zona [[zone]]",
+          "pl": "[[state]] strefę [[zone]]",
+          "ru": "[[state]] зона [[zone]]",
+          "ko": "[[state]] 존 [[zone]]",
+          "zh": "[[state]]防区 [[zone]]"
+        },
         "args": [
-          { "name": "zone", "type": "autocomplete", "title": { "en": "Zone", "sv": "Zon" } },
-          { "name": "state", "type": "dropdown", "title": { "en": "State", "sv": "Läge" }, "values": [ { "id": "bypass", "title": { "en": "Bypass", "sv": "Bypassa" } }, { "id": "recover", "title": { "en": "Restore", "sv": "Återställ" } } ] }
+          {
+            "name": "zone",
+            "type": "autocomplete",
+            "title": {
+              "en": "Zone",
+              "sv": "Zon",
+              "es": "Zona",
+              "pl": "Strefa",
+              "ru": "Зона",
+              "ko": "존",
+              "zh": "防区"
+            }
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State",
+              "sv": "Läge",
+              "es": "Estado",
+              "pl": "Stan",
+              "ru": "Состояние",
+              "ko": "상태",
+              "zh": "状态"
+            },
+            "values": [
+              {
+                "id": "bypass",
+                "title": {
+                  "en": "Bypass",
+                  "sv": "Bypassa",
+                  "es": "Anular",
+                  "pl": "Pomiń",
+                  "ru": "Обход",
+                  "ko": "우회",
+                  "zh": "旁路"
+                }
+              },
+              {
+                "id": "recover",
+                "title": {
+                  "en": "Restore",
+                  "sv": "Återställ",
+                  "es": "Restaurar",
+                  "pl": "Przywróć",
+                  "ru": "Восстановить",
+                  "ko": "복구",
+                  "zh": "恢复"
+                }
+              }
+            ]
+          }
         ]
       },
       {
         "id": "siren",
-        "title": { "en": "Sound / silence the siren", "sv": "Ljud / tysta sirenen", "nl": "Sirene laten klinken / stoppen", "de": "Sirene auslösen / stoppen", "fr": "Déclencher / arrêter la sirène", "it": "Attiva / silenzia la sirena", "no": "Utløs / demp sirenen", "da": "Lyd / dæmp sirenen", "uk": "Увімкнути / вимкнути сирену", "el": "Ενεργοποίηση / σίγαση σειρήνας" },
-        "titleFormatted": { "en": "[[state]] the siren", "sv": "[[state]] sirenen" },
-        "args": [ { "name": "state", "type": "dropdown", "title": { "en": "State", "sv": "Läge" }, "values": [ { "id": "on", "title": { "en": "Sound", "sv": "Ljud" } }, { "id": "off", "title": { "en": "Silence", "sv": "Tysta" } } ] } ]
+        "title": {
+          "en": "Sound / silence the siren",
+          "sv": "Ljud / tysta sirenen",
+          "nl": "Sirene laten klinken / stoppen",
+          "de": "Sirene auslösen / stoppen",
+          "fr": "Déclencher / arrêter la sirène",
+          "it": "Attiva / silenzia la sirena",
+          "no": "Utløs / demp sirenen",
+          "da": "Lyd / dæmp sirenen",
+          "uk": "Увімкнути / вимкнути сирену",
+          "el": "Ενεργοποίηση / σίγαση σειρήνας",
+          "es": "Activar / silenciar la sirena",
+          "pl": "Włącz / wycisz syrenę",
+          "ru": "Включить / выключить сирену",
+          "ko": "사이렌 울림/무음",
+          "zh": "鸣响/静音警号"
+        },
+        "titleFormatted": {
+          "en": "[[state]] the siren",
+          "sv": "[[state]] sirenen",
+          "es": "[[state]] la sirena",
+          "pl": "[[state]] syrenę",
+          "ru": "[[state]] сирену",
+          "ko": "사이렌 [[state]]",
+          "zh": "[[state]]警号"
+        },
+        "args": [
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State",
+              "sv": "Läge",
+              "es": "Estado",
+              "pl": "Stan",
+              "ru": "Состояние",
+              "ko": "상태",
+              "zh": "状态"
+            },
+            "values": [
+              {
+                "id": "on",
+                "title": {
+                  "en": "Sound",
+                  "sv": "Ljud",
+                  "es": "Activar",
+                  "pl": "Włącz",
+                  "ru": "Включить",
+                  "ko": "울림",
+                  "zh": "鸣响"
+                }
+              },
+              {
+                "id": "off",
+                "title": {
+                  "en": "Silence",
+                  "sv": "Tysta",
+                  "es": "Silenciar",
+                  "pl": "Wycisz",
+                  "ru": "Выключить",
+                  "ko": "무음",
+                  "zh": "静音"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   "drivers": [
     {
       "id": "panel",
-      "name": { "en": "AX PRO Panel", "sv": "AX PRO-panel", "nl": "AX PRO-paneel", "de": "AX PRO-Zentrale", "fr": "Centrale AX PRO", "it": "Centrale AX PRO", "no": "AX PRO-sentral", "da": "AX PRO-central", "uk": "Панель AX PRO", "el": "Πίνακας AX PRO" },
+      "name": {
+        "en": "AX PRO Panel",
+        "sv": "AX PRO-panel",
+        "nl": "AX PRO-paneel",
+        "de": "AX PRO-Zentrale",
+        "fr": "Centrale AX PRO",
+        "it": "Centrale AX PRO",
+        "no": "AX PRO-sentral",
+        "da": "AX PRO-central",
+        "uk": "Панель AX PRO",
+        "el": "Πίνακας AX PRO",
+        "es": "Central AX PRO",
+        "pl": "Centrala AX PRO",
+        "ru": "Панель AX PRO",
+        "ko": "AX PRO 패널",
+        "zh": "AX PRO 主机"
+      },
       "class": "homealarm",
-      "capabilities": ["homealarm_state"],
-      "images": { "small": "/drivers/panel/assets/images/small.png", "large": "/drivers/panel/assets/images/large.png" },
+      "capabilities": [
+        "homealarm_state"
+      ],
+      "images": {
+        "small": "/drivers/panel/assets/images/small.png",
+        "large": "/drivers/panel/assets/images/large.png"
+      },
       "pair": [
-        { "id": "connect" },
-        { "id": "list_devices", "template": "list_devices", "navigation": { "next": "add_devices" } },
-        { "id": "add_devices", "template": "add_devices" }
+        {
+          "id": "connect"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
       ],
       "repair": [
-        { "id": "connect" }
+        {
+          "id": "connect"
+        }
       ]
     }
   ]
