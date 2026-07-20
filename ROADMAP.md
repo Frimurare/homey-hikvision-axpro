@@ -1,8 +1,11 @@
 # Roadmap
 
-Agreed feature set (aligned 2026-07-20). Everything below is planned; the panel-hardware
-items (A) will be verified in single, reused ISAPI sessions to avoid saturating the panel's
-login pool.
+Agreed feature set (aligned 2026-07-20).
+
+**Status:** A–H shipped in **v1.1.0 BETA** (validates at publish level). Feature A's snapshot
+payload keying still needs verification against a real armed alarm (open the alertStream, arm,
+trigger a PIR-CAM, confirm the JPEG/JSON format) — done in one clean reused session. Feature I
+(cameras) is deferred to post-summer per plan.
 
 ## Planned features (A–I)
 
