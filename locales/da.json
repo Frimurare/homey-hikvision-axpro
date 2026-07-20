@@ -1,0 +1,14 @@
+{
+  "pair": {
+    "intro": "Indtast AX PRO-centralens IP-adresse og loginet, du bruger til dens webside.",
+    "connect": "Forbind",
+    "host": "IP-adresse",
+    "username": "Brugernavn",
+    "password": "Adgangskode"
+  },
+  "device": {
+    "panel": "AX PRO-central",
+    "zone": "Zone",
+    "area": "Område"
+  }
+}

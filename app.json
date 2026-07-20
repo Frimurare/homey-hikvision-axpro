@@ -1,26 +1,109 @@
 {
   "id": "se.manvarg.hikvision-axpro",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": ["local"],
   "name": { "en": "Hikvision AX PRO" },
   "description": {
-    "en": "Local control and monitoring for Hikvision AX PRO wireless alarm panels (DS-PWA96). Arm/disarm, per-detector temperature, door/contact, motion, tamper and battery. Built with ❤️ by Ulf Holmström.",
-    "sv": "Lokal styrning och övervakning av Hikvision AX PRO trådlösa larmpaneler (DS-PWA96). Till-/frånkoppling, temperatur per detektor, dörr/kontakt, rörelse, sabotage och batteri. Built with ❤️ by Ulf Holmström.",
-    "nl": "Lokale bediening en bewaking van Hikvision AX PRO draadloze alarmpanelen (DS-PWA96). In-/uitschakelen, temperatuur per detector, deur/contact, beweging, sabotage en batterij. Built with ❤️ by Ulf Holmström.",
-    "de": "Lokale Steuerung und Überwachung von Hikvision AX PRO Funk-Alarmzentralen (DS-PWA96). Scharf-/Unscharfschalten, Temperatur je Melder, Tür/Kontakt, Bewegung, Sabotage und Batterie. Built with ❤️ by Ulf Holmström.",
-    "fr": "Contrôle et surveillance en local des centrales d'alarme sans fil Hikvision AX PRO (DS-PWA96). Armement/désarmement, température par détecteur, porte/contact, mouvement, sabotage et batterie. Built with ❤️ by Ulf Holmström."
+    "en": "Local control and monitoring for Hikvision AX PRO wireless alarm panels. Arm/disarm per area, per-detector temperature, door/contact, motion, tamper and battery, panel health (mains/fault), PIR-CAM snapshots on alarm, and rich Flow cards. Built with ❤️ by Ulf Holmström.",
+    "sv": "Lokal styrning och övervakning av Hikvision AX PRO trådlösa larmpaneler. Till-/frånkoppling per område, temperatur per detektor, dörr/kontakt, rörelse, sabotage och batteri, panelhälsa (nätström/fel), PIR-CAM-bilder vid larm och rika Flow-kort. Built with ❤️ by Ulf Holmström.",
+    "nl": "Lokale bediening en bewaking van Hikvision AX PRO draadloze alarmpanelen. In-/uitschakelen per gebied, temperatuur per detector, deur/contact, beweging, sabotage en batterij, paneelstatus (netstroom/storing), PIR-CAM-momentopnamen bij alarm en uitgebreide Flow-kaarten.",
+    "de": "Lokale Steuerung und Überwachung von Hikvision AX PRO Funk-Alarmzentralen. Scharf-/Unscharfschalten je Bereich, Temperatur je Melder, Tür/Kontakt, Bewegung, Sabotage und Batterie, Zentralen-Zustand (Netz/Störung), PIR-CAM-Schnappschüsse bei Alarm und umfangreiche Flow-Karten.",
+    "fr": "Contrôle et surveillance en local des centrales d'alarme sans fil Hikvision AX PRO. Armement/désarmement par zone, température par détecteur, porte/contact, mouvement, sabotage et batterie, état de la centrale (secteur/défaut), instantanés PIR-CAM sur alarme et cartes Flow riches.",
+    "it": "Controllo e monitoraggio locale delle centrali di allarme wireless Hikvision AX PRO. Inserimento/disinserimento per area, temperatura per rilevatore, porta/contatto, movimento, manomissione e batteria, stato della centrale (rete/guasto), istantanee PIR-CAM in allarme e schede Flow avanzate.",
+    "no": "Lokal styring og overvåking av Hikvision AX PRO trådløse alarmsentraler. På-/avslåing per område, temperatur per detektor, dør/kontakt, bevegelse, sabotasje og batteri, sentralstatus (nett/feil), PIR-CAM-øyeblikksbilder ved alarm og rike Flow-kort.",
+    "da": "Lokal styring og overvågning af Hikvision AX PRO trådløse alarmcentraler. Til-/frakobling pr. område, temperatur pr. detektor, dør/kontakt, bevægelse, sabotage og batteri, centralstatus (net/fejl), PIR-CAM-øjebliksbilleder ved alarm og rige Flow-kort.",
+    "uk": "Локальне керування та моніторинг бездротових охоронних панелей Hikvision AX PRO. Постановка/зняття за розділами, температура кожного датчика, двері/контакт, рух, саботаж і батарея, стан панелі (мережа/несправність), знімки PIR-CAM під час тривоги та розширені картки Flow.",
+    "el": "Τοπικός έλεγχος και παρακολούθηση ασύρματων πινάκων συναγερμού Hikvision AX PRO. Όπλιση/αφόπλιση ανά περιοχή, θερμοκρασία ανά ανιχνευτή, πόρτα/επαφή, κίνηση, παραβίαση και μπαταρία, κατάσταση πίνακα (δίκτυο/βλάβη), στιγμιότυπα PIR-CAM σε συναγερμό και πλούσιες κάρτες Flow."
   },
   "category": ["security"],
   "brandColor": "#E30613",
   "permissions": [],
   "author": { "name": "Ulf Holmström", "email": "ulf@manvarg.se" },
   "images": { "small": "/assets/images/small.png", "large": "/assets/images/large.png" },
+  "capabilities": {
+    "alarm_mains": {
+      "type": "boolean",
+      "title": { "en": "Mains power lost", "sv": "Nätström förlorad", "nl": "Netstroom verloren", "de": "Netzstrom verloren", "fr": "Secteur perdu", "it": "Rete elettrica assente", "no": "Nettstrøm tapt", "da": "Netstrøm mistet", "uk": "Втрата мережі", "el": "Απώλεια δικτύου" },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true
+    }
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "detector_alarmed",
+        "title": { "en": "A detector alarmed", "sv": "En detektor larmade", "nl": "Een detector sloeg alarm", "de": "Ein Melder hat ausgelöst", "fr": "Un détecteur a déclenché", "it": "Un rilevatore è scattato", "no": "En detektor utløste", "da": "En detektor udløste", "uk": "Спрацював датчик", "el": "Ενεργοποιήθηκε ανιχνευτής" },
+        "hint": { "en": "Fires when any detector goes into alarm. Carries the detector name, type, area and (for PIR-CAM detectors) a snapshot.", "sv": "Utlöses när en detektor larmar. Bär med detektorns namn, typ, område och (för PIR-CAM) en ögonblicksbild." },
+        "tokens": [
+          { "name": "name", "type": "string", "title": { "en": "Detector", "sv": "Detektor" }, "example": "Hall" },
+          { "name": "type", "type": "string", "title": { "en": "Type", "sv": "Typ" }, "example": "motion" },
+          { "name": "area", "type": "number", "title": { "en": "Area", "sv": "Område" }, "example": 1 },
+          { "name": "snapshot", "type": "image", "title": { "en": "Snapshot", "sv": "Ögonblicksbild" } }
+        ]
+      },
+      {
+        "id": "system_armed",
+        "title": { "en": "The system was armed", "sv": "Systemet tillkopplades", "nl": "Het systeem werd ingeschakeld", "de": "Das System wurde scharf geschaltet", "fr": "Le système a été armé", "it": "Il sistema è stato inserito", "no": "Systemet ble påslått", "da": "Systemet blev tilkoblet", "uk": "Систему поставлено на охорону", "el": "Το σύστημα οπλίστηκε" },
+        "tokens": [ { "name": "mode", "type": "string", "title": { "en": "Mode", "sv": "Läge" }, "example": "away" } ]
+      },
+      {
+        "id": "system_disarmed",
+        "title": { "en": "The system was disarmed", "sv": "Systemet frånkopplades", "nl": "Het systeem werd uitgeschakeld", "de": "Das System wurde unscharf geschaltet", "fr": "Le système a été désarmé", "it": "Il sistema è stato disinserito", "no": "Systemet ble avslått", "da": "Systemet blev frakoblet", "uk": "Систему знято з охорони", "el": "Το σύστημα αφοπλίστηκε" }
+      }
+    ],
+    "conditions": [
+      {
+        "id": "system_is_armed",
+        "title": { "en": "The system !{{is|is not}} armed", "sv": "Systemet !{{är|är inte}} tillkopplat", "nl": "Het systeem !{{is|is niet}} ingeschakeld", "de": "Das System !{{ist|ist nicht}} scharf", "fr": "Le système !{{est|n'est pas}} armé", "it": "Il sistema !{{è|non è}} inserito", "no": "Systemet !{{er|er ikke}} påslått", "da": "Systemet !{{er|er ikke}} tilkoblet", "uk": "Систему !{{поставлено|не поставлено}} на охорону", "el": "Το σύστημα !{{είναι|δεν είναι}} οπλισμένο" }
+      },
+      {
+        "id": "area_is_armed",
+        "title": { "en": "Area !{{is|is not}} armed", "sv": "Området !{{är|är inte}} tillkopplat", "nl": "Gebied !{{is|is niet}} ingeschakeld", "de": "Bereich !{{ist|ist nicht}} scharf", "fr": "La zone !{{est|n'est pas}} armée", "it": "L'area !{{è|non è}} inserita", "no": "Området !{{er|er ikke}} påslått", "da": "Området !{{er|er ikke}} tilkoblet", "uk": "Розділ !{{поставлено|не поставлено}} на охорону", "el": "Η περιοχή !{{είναι|δεν είναι}} οπλισμένη" },
+        "titleFormatted": { "en": "Area [[area]] !{{is|is not}} armed", "sv": "Området [[area]] !{{är|är inte}} tillkopplat" },
+        "args": [ { "name": "area", "type": "autocomplete", "title": { "en": "Area", "sv": "Område" } } ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "arm_area",
+        "title": { "en": "Arm an area", "sv": "Tillkoppla ett område", "nl": "Een gebied inschakelen", "de": "Bereich scharf schalten", "fr": "Armer une zone", "it": "Inserisci un'area", "no": "Slå på et område", "da": "Tilkobl et område", "uk": "Поставити розділ на охорону", "el": "Όπλιση περιοχής" },
+        "titleFormatted": { "en": "Arm area [[area]] ([[mode]])", "sv": "Tillkoppla område [[area]] ([[mode]])" },
+        "args": [
+          { "name": "area", "type": "autocomplete", "title": { "en": "Area", "sv": "Område" } },
+          { "name": "mode", "type": "dropdown", "title": { "en": "Mode", "sv": "Läge" }, "values": [ { "id": "away", "title": { "en": "Away", "sv": "Borta" } }, { "id": "stay", "title": { "en": "Stay", "sv": "Hemma" } } ] }
+        ]
+      },
+      {
+        "id": "disarm_area",
+        "title": { "en": "Disarm an area", "sv": "Frånkoppla ett område", "nl": "Een gebied uitschakelen", "de": "Bereich unscharf schalten", "fr": "Désarmer une zone", "it": "Disinserisci un'area", "no": "Slå av et område", "da": "Frakobl et område", "uk": "Зняти розділ з охорони", "el": "Αφόπλιση περιοχής" },
+        "titleFormatted": { "en": "Disarm area [[area]]", "sv": "Frånkoppla område [[area]]" },
+        "args": [ { "name": "area", "type": "autocomplete", "title": { "en": "Area", "sv": "Område" } } ]
+      },
+      {
+        "id": "bypass_zone",
+        "title": { "en": "Bypass / restore a zone", "sv": "Bypassa / återställ en zon", "nl": "Zone overbruggen / herstellen", "de": "Zone überbrücken / wiederherstellen", "fr": "Exclure / réintégrer une zone", "it": "Escludi / ripristina una zona", "no": "Forbikoble / gjenopprett en sone", "da": "Bypass / gendan en zone", "uk": "Обхід / відновлення зони", "el": "Παράκαμψη / επαναφορά ζώνης" },
+        "titleFormatted": { "en": "[[state]] zone [[zone]]", "sv": "[[state]] zon [[zone]]" },
+        "args": [
+          { "name": "zone", "type": "autocomplete", "title": { "en": "Zone", "sv": "Zon" } },
+          { "name": "state", "type": "dropdown", "title": { "en": "State", "sv": "Läge" }, "values": [ { "id": "bypass", "title": { "en": "Bypass", "sv": "Bypassa" } }, { "id": "recover", "title": { "en": "Restore", "sv": "Återställ" } } ] }
+        ]
+      },
+      {
+        "id": "siren",
+        "title": { "en": "Sound / silence the siren", "sv": "Ljud / tysta sirenen", "nl": "Sirene laten klinken / stoppen", "de": "Sirene auslösen / stoppen", "fr": "Déclencher / arrêter la sirène", "it": "Attiva / silenzia la sirena", "no": "Utløs / demp sirenen", "da": "Lyd / dæmp sirenen", "uk": "Увімкнути / вимкнути сирену", "el": "Ενεργοποίηση / σίγαση σειρήνας" },
+        "titleFormatted": { "en": "[[state]] the siren", "sv": "[[state]] sirenen" },
+        "args": [ { "name": "state", "type": "dropdown", "title": { "en": "State", "sv": "Läge" }, "values": [ { "id": "on", "title": { "en": "Sound", "sv": "Ljud" } }, { "id": "off", "title": { "en": "Silence", "sv": "Tysta" } } ] } ]
+      }
+    ]
+  },
   "drivers": [
     {
       "id": "panel",
-      "name": { "en": "AX PRO Panel", "sv": "AX PRO-panel", "nl": "AX PRO-paneel", "de": "AX PRO-Zentrale", "fr": "Centrale AX PRO" },
+      "name": { "en": "AX PRO Panel", "sv": "AX PRO-panel", "nl": "AX PRO-paneel", "de": "AX PRO-Zentrale", "fr": "Centrale AX PRO", "it": "Centrale AX PRO", "no": "AX PRO-sentral", "da": "AX PRO-central", "uk": "Панель AX PRO", "el": "Πίνακας AX PRO" },
       "class": "homealarm",
       "capabilities": ["homealarm_state"],
       "images": { "small": "/drivers/panel/assets/images/small.png", "large": "/drivers/panel/assets/images/large.png" },
@@ -28,6 +111,9 @@
         { "id": "connect" },
         { "id": "list_devices", "template": "list_devices", "navigation": { "next": "add_devices" } },
         { "id": "add_devices", "template": "add_devices" }
+      ],
+      "repair": [
+        { "id": "connect" }
       ]
     }
   ]

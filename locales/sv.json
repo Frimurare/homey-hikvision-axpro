@@ -6,5 +6,9 @@
     "username": "Användarnamn",
     "password": "Lösenord"
   },
-  "device": { "panel": "AX PRO-panel", "zone": "Zon" }
+  "device": {
+    "panel": "AX PRO-panel",
+    "zone": "Zon",
+    "area": "Område"
+  }
 }

@@ -1,10 +1,14 @@
 {
   "pair": {
-    "intro": "Voer het IP-adres van uw AX PRO-paneel in en de login die u voor de webpagina gebruikt.",
+    "intro": "Voer het IP-adres van je AX PRO-paneel in en de login van de webpagina.",
     "connect": "Verbinden",
     "host": "IP-adres",
     "username": "Gebruikersnaam",
     "password": "Wachtwoord"
   },
-  "device": { "panel": "AX PRO-paneel", "zone": "Zone" }
+  "device": {
+    "panel": "AX PRO-paneel",
+    "zone": "Zone",
+    "area": "Gebied"
+  }
 }

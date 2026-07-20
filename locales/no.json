@@ -1,0 +1,14 @@
+{
+  "pair": {
+    "intro": "Skriv inn IP-adressen til AX PRO-sentralen og innloggingen du bruker på nettsiden.",
+    "connect": "Koble til",
+    "host": "IP-adresse",
+    "username": "Brukernavn",
+    "password": "Passord"
+  },
+  "device": {
+    "panel": "AX PRO-sentral",
+    "zone": "Sone",
+    "area": "Område"
+  }
+}

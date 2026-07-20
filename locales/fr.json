@@ -6,5 +6,9 @@
     "username": "Nom d'utilisateur",
     "password": "Mot de passe"
   },
-  "device": { "panel": "Centrale AX PRO", "zone": "Zone" }
+  "device": {
+    "panel": "Centrale AX PRO",
+    "zone": "Zone",
+    "area": "Zone"
+  }
 }

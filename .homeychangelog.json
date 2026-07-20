@@ -1,0 +1,6 @@
+{
+  "1.1.0": {
+    "en": "BETA — big update: arm/disarm per area, richer Flow cards (detector alarmed with snapshot, armed/disarmed, area conditions, arm/disarm/bypass/siren actions), panel health (mains-power-lost, tamper), low-battery & offline alarms, PIR-CAM snapshot on alarm, add detectors without re-adding the panel, device Repair to change IP/password, and 10 languages.",
+    "sv": "BETA — stor uppdatering: till-/frånkoppling per område, rikare Flow-kort (detektor larmade med bild, till-/frånkopplat, områdesvillkor, actions arma/frånkoppla/bypassa/siren), panelhälsa (nätström borta, sabotage), larm för lågt batteri & offline, PIR-CAM-bild vid larm, lägg till detektorer utan att re-adda panelen, Reparera-flöde för IP/lösen, och 10 språk."
+  }
+}
