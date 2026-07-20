@@ -58,6 +58,35 @@ Everything runs **locally on the Homey** — there is no cloud dependency and no
 
 Every detector also exposes **temperature**, **battery** and **tamper** where the panel provides them.
 
+## Understanding your sensors (important!)
+
+Different detector types behave very differently in Homey — and this is **by design in the AX PRO panel, not a bug in the app**. If a motion detector looks "dead" while your alarm is off, this section explains why.
+
+### 🚶 Motion detectors (PIR) only report **when the area is armed**
+
+A wireless PIR **sleeps while its area is disarmed** and wakes up only when you arm the system. So when the alarm is off, the detector shows no motion in Homey even if you walk right in front of it. This is **intentional**: a battery-powered wireless PIR that transmitted on every movement, 24/7, would drain its battery in weeks instead of lasting ~5 years. Hikvision (like every wireless alarm brand) puts PIRs to sleep when they aren't needed.
+
+**What this means for Flows:** a PIR is only a usable motion trigger *while the alarm is armed*. You cannot use an AX PRO PIR as a silent "someone is moving" trigger for home automation while the system is disarmed — it simply isn't awake to tell Homey anything.
+
+> **"But can't I make it always-on?"** Technically yes — by changing the zone to a **24-hour zone type** in the panel. **Don't**, unless you really mean it: a 24-hour zone *sounds the siren every time it triggers, even when disarmed*. That's meant for panic/fire/tamper, not for quiet automation. There is **no** mode where an AX PRO PIR reports motion silently while disarmed. If you want "motion in the garage → do something in Homey" with the alarm **off**, use an always-on source instead — e.g. a camera with people/vehicle analytics, or a mains-powered motion sensor on another Homey app.
+
+### 🚪 Door/window contacts report **all the time**
+
+A magnetic contact is a passive reed switch that draws almost no power, so it **never sleeps**. Open/closed state is live in Homey 24/7, armed or disarmed. These make excellent everyday automation triggers (e.g. *garage door opens → turn on the light*) regardless of the alarm's arm state.
+
+### 🔥🆘 Fire, panic and tamper are **24-hour by nature**
+
+Smoke detectors, panic buttons and tamper switches are always active — they protect you whether the system is armed or not, and will report/alarm at any time.
+
+**Rule of thumb:**
+
+| Sensor | Reports when disarmed? | Good for silent automation? |
+|--------|:----------------------:|:---------------------------:|
+| Motion / PIR | ❌ sleeps until armed | Only while armed |
+| Door/window contact | ✅ always | ✅ yes, 24/7 |
+| Smoke / fire | ✅ always (24 h) | — (safety) |
+| Panic / tamper | ✅ always (24 h) | — (safety) |
+
 ## Requirements
 
 - **Homey Pro** (Early 2023 or later, firmware ≥ 5.0).
