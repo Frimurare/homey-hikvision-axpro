@@ -6,5 +6,9 @@
   "1.1.1": {
     "en": "Arm/disarm each area independently, richer Flow cards (alarm triggered, armed/disarmed, area conditions, arm/disarm/bypass/siren actions), panel health (mains-power-lost, tamper), low-battery & offline alerts, more reliable alarm detection, Repair to change IP/password without re-adding, add detectors without re-adding the panel, and 15 languages.",
     "sv": "Till-/frankoppling per omrade, rikare Flow-kort, panelhalsa (natstrom borta, sabotage), larm for lagt batteri & offline, mer tillforlitlig larmdetektion, Reparera for att byta IP/losen utan att re-adda, lagg till detektorer utan att re-adda panelen, och 15 sprak."
+  },
+  "1.1.2": {
+    "en": "Corrected the store description (the app no longer mentions a local camera snapshot, which is not available on current AX PRO firmware).",
+    "sv": "Rattad butiksbeskrivning (appen namner inte langre en lokal kamera-ognablicksbild, som inte finns pa nuvarande AX PRO-firmware)."
   }
 }
