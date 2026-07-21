@@ -94,7 +94,7 @@ class PanelDriver extends Homey.Driver {
       store,
       icon: ICON('panel'),
       class: 'homealarm',
-      capabilities: ['homealarm_state', 'alarm_tamper', 'alarm_mains'],
+      capabilities: ['homealarm_state', 'alarm_generic', 'alarm_tamper', 'alarm_mains'],
     }];
 
     // Areas / partitions (feature B) — one device per enabled area.
@@ -107,7 +107,7 @@ class PanelDriver extends Homey.Driver {
         store,
         icon: ICON('panel'),
         class: 'homealarm',
-        capabilities: ['homealarm_state'],
+        capabilities: ['homealarm_state', 'alarm_generic'],
       });
     }
 

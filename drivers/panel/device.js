@@ -1,6 +1,6 @@
 'use strict';
 const Homey = require('homey');
-const { LOW_BATTERY } = require('../../lib/profiles');
+const { LOW_BATTERY, zoneProfile, PERIPHERALS } = require('../../lib/profiles');
 
 // device type -> exDevStatus list/item names (fallback when data.list is absent)
 const PERIPHERAL_MAP = {
@@ -29,6 +29,11 @@ class AxProDevice extends Homey.Device {
     this._type = data.type;
     this._host = store.host || data.host; // store host wins (repair can change the IP)
     const { username, password } = store;
+    // Homey does NOT add new capabilities to already-paired devices when the app
+    // updates. Self-heal: add any capability this device type should have but is
+    // missing (e.g. panels paired before alarm_generic/alarm_mains existed).
+    await this._reconcileCapabilities();
+
     this._poller = this.homey.app.getPoller({ host: this._host, username, password });
     this._unsub = this._poller.subscribe((d) => this._update(d).catch(this.error));
 
@@ -56,6 +61,21 @@ class AxProDevice extends Homey.Device {
     }
 
     if (this._poller.latest) await this._update(this._poller.latest).catch(this.error);
+  }
+
+  _desiredCapabilities() {
+    const store = this.getStore();
+    if (this._type === 'panel') return ['homealarm_state', 'alarm_generic', 'alarm_tamper', 'alarm_mains'];
+    if (this._type === 'area') return ['homealarm_state', 'alarm_generic'];
+    if (this._type === 'zone') return zoneProfile(store.detectorType).caps;
+    const pdef = PERIPHERALS.find((p) => p.type === this._type);
+    return pdef ? pdef.caps : [];
+  }
+
+  async _reconcileCapabilities() {
+    for (const cap of this._desiredCapabilities()) {
+      if (!this.hasCapability(cap)) { await this.addCapability(cap).catch(() => {}); }
+    }
   }
 
   async _setArm(value, sub) {
@@ -88,10 +108,16 @@ class AxProDevice extends Homey.Device {
       if (subs.some((s) => this._armState(s) === 'armed')) state = 'armed';
       else if (subs.some((s) => this._armState(s) === 'partially_armed')) state = 'partially_armed';
       this._set('homealarm_state', state);
+      // System in alarm (siren) — the subsystem `alarm` flag stays true for the
+      // whole alarm, so this is the reliable "the alarm went off" signal (the
+      // per-zone flag is too brief to catch by polling). Gives an auto Flow trigger.
+      const inAlarm = subs.some((s) => s.alarm === true);
+      this._set('alarm_generic', inAlarm);
       const h = data.host || {};
-      this._set('alarm_tamper', !!h.tamperEvident);
+      this._set('alarm_tamper', !!h.tamperEvident || subs.some((s) => s.tamperEvident === true));
       // ACConnect true = mains present; alarm when it is explicitly false
       if ('ACConnect' in h) this._set('alarm_mains', h.ACConnect === false);
+      if (inAlarm) this.log('SYSTEM IN ALARM — subsystems:', subs.filter((s) => s.alarm).map((s) => s.id));
       return;
     }
 
@@ -101,6 +127,7 @@ class AxProDevice extends Homey.Device {
       if (!A) { await this.setUnavailable('Offline').catch(() => {}); return; }
       await this.setAvailable().catch(() => {});
       this._set('homealarm_state', this._armState(A));
+      this._set('alarm_generic', A.alarm === true);
       return;
     }
 
