@@ -7,24 +7,24 @@
     "local"
   ],
   "name": {
-    "en": "Hikvision AX PRO"
+    "en": "Hikvision AX PRO Alarm"
   },
   "description": {
-    "en": "Local control and monitoring for Hikvision AX PRO wireless alarm panels. Arm/disarm per area, per-detector temperature, door/contact, motion, tamper and battery, panel health (mains/fault), PIR-CAM snapshots on alarm, and rich Flow cards. Built with ❤️ by Ulf Holmström.",
-    "sv": "Lokal styrning och övervakning av Hikvision AX PRO trådlösa larmpaneler. Till-/frånkoppling per område, temperatur per detektor, dörr/kontakt, rörelse, sabotage och batteri, panelhälsa (nätström/fel), PIR-CAM-bilder vid larm och rika Flow-kort. Built with ❤️ by Ulf Holmström.",
-    "nl": "Lokale bediening en bewaking van Hikvision AX PRO draadloze alarmpanelen. In-/uitschakelen per gebied, temperatuur per detector, deur/contact, beweging, sabotage en batterij, paneelstatus (netstroom/storing), PIR-CAM-momentopnamen bij alarm en uitgebreide Flow-kaarten.",
-    "de": "Lokale Steuerung und Überwachung von Hikvision AX PRO Funk-Alarmzentralen. Scharf-/Unscharfschalten je Bereich, Temperatur je Melder, Tür/Kontakt, Bewegung, Sabotage und Batterie, Zentralen-Zustand (Netz/Störung), PIR-CAM-Schnappschüsse bei Alarm und umfangreiche Flow-Karten.",
-    "fr": "Contrôle et surveillance en local des centrales d'alarme sans fil Hikvision AX PRO. Armement/désarmement par zone, température par détecteur, porte/contact, mouvement, sabotage et batterie, état de la centrale (secteur/défaut), instantanés PIR-CAM sur alarme et cartes Flow riches.",
-    "it": "Controllo e monitoraggio locale delle centrali di allarme wireless Hikvision AX PRO. Inserimento/disinserimento per area, temperatura per rilevatore, porta/contatto, movimento, manomissione e batteria, stato della centrale (rete/guasto), istantanee PIR-CAM in allarme e schede Flow avanzate.",
-    "no": "Lokal styring og overvåking av Hikvision AX PRO trådløse alarmsentraler. På-/avslåing per område, temperatur per detektor, dør/kontakt, bevegelse, sabotasje og batteri, sentralstatus (nett/feil), PIR-CAM-øyeblikksbilder ved alarm og rike Flow-kort.",
-    "da": "Lokal styring og overvågning af Hikvision AX PRO trådløse alarmcentraler. Til-/frakobling pr. område, temperatur pr. detektor, dør/kontakt, bevægelse, sabotage og batteri, centralstatus (net/fejl), PIR-CAM-øjebliksbilleder ved alarm og rige Flow-kort.",
-    "uk": "Локальне керування та моніторинг бездротових охоронних панелей Hikvision AX PRO. Постановка/зняття за розділами, температура кожного датчика, двері/контакт, рух, саботаж і батарея, стан панелі (мережа/несправність), знімки PIR-CAM під час тривоги та розширені картки Flow.",
-    "el": "Τοπικός έλεγχος και παρακολούθηση ασύρματων πινάκων συναγερμού Hikvision AX PRO. Όπλιση/αφόπλιση ανά περιοχή, θερμοκρασία ανά ανιχνευτή, πόρτα/επαφή, κίνηση, παραβίαση και μπαταρία, κατάσταση πίνακα (δίκτυο/βλάβη), στιγμιότυπα PIR-CAM σε συναγερμό και πλούσιες κάρτες Flow.",
-    "es": "Control y monitorización local de centrales de alarma inalámbricas Hikvision AX PRO. Armado/desarmado por área, temperatura por detector, puerta/contacto, movimiento, sabotaje y batería, estado de la central (red/avería), instantáneas PIR-CAM en alarma y tarjetas de Flujo avanzadas.",
-    "pl": "Lokalne sterowanie i monitorowanie bezprzewodowych central alarmowych Hikvision AX PRO. Uzbrajanie/rozbrajanie na strefę, temperatura każdego czujnika, drzwi/kontaktron, ruch, sabotaż i bateria, stan centrali (zasilanie/awaria), zdjęcia PIR-CAM przy alarmie oraz rozbudowane karty Flow.",
-    "ru": "Локальное управление и мониторинг беспроводных охранных панелей Hikvision AX PRO. Постановка/снятие по разделам, температура каждого датчика, дверь/контакт, движение, саботаж и батарея, состояние панели (сеть/неисправность), снимки PIR-CAM при тревоге и расширенные карточки Flow.",
-    "ko": "Hikvision AX PRO 무선 경보 패널의 로컬 제어 및 모니터링. 구역별 경계/해제, 감지기별 온도, 문/접점, 움직임, 탬퍼 및 배터리, 패널 상태(전원/고장), 경보 시 PIR-CAM 스냅샷, 풍부한 Flow 카드.",
-    "zh": "本地控制和监控 Hikvision AX PRO 无线报警主机。按区域布防/撤防、每个探测器温度、门/触点、移动、防拆和电池、主机状态（市电/故障）、报警时 PIR-CAM 快照，以及丰富的 Flow 卡片。"
+    "en": "Your Hikvision AX PRO alarm, always in the loop.",
+    "sv": "Ditt Hikvision AX PRO-larm, alltid i loopen.",
+    "de": "Deine Hikvision AX PRO-Alarmanlage, immer im Bilde.",
+    "fr": "Votre alarme Hikvision AX PRO, toujours dans la boucle.",
+    "nl": "Jouw Hikvision AX PRO-alarm, altijd op de hoogte.",
+    "it": "Il tuo allarme Hikvision AX PRO, sempre sotto controllo.",
+    "no": "Ditt Hikvision AX PRO-alarm, alltid i loopen.",
+    "da": "Dit Hikvision AX PRO-alarm, altid i loopet.",
+    "uk": "Ваша сигналізація Hikvision AX PRO — завжди на звʼязку.",
+    "el": "Ο συναγερμός σας Hikvision AX PRO, πάντα σε επαφή.",
+    "es": "Tu alarma Hikvision AX PRO, siempre bajo control.",
+    "pl": "Twój alarm Hikvision AX PRO, zawsze pod kontrolą.",
+    "ru": "Ваша сигнализация Hikvision AX PRO — всегда на связи.",
+    "ko": "언제나 함께하는 Hikvision AX PRO 알람.",
+    "zh": "您的海康威视 AX PRO 报警系统，尽在掌握。"
   },
   "category": [
     "security"
