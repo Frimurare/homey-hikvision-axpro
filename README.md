@@ -26,7 +26,7 @@ Everything runs **locally on the Homey** — there is no cloud dependency and no
 - 🗂️ **Areas as devices** — every enabled area/partition becomes its own Homey device, so you can arm and disarm each area independently.
 - ⚡ **Flow cards** — trigger *detector alarmed* (with the detector name, type, area and — for PIR-CAM — a **snapshot image token**), *system armed* / *system disarmed*; conditions *system is armed* and *area is armed*; actions arm/disarm an area, bypass/unbypass a zone and sound the siren.
 - 📷 **PIR-CAM snapshots** — where the panel exposes the capture over the local API, a camera detector's picture is attached to the alarm as a Flow image token. (Note: some AX PRO firmware only sends these images to the Hik-Connect cloud, not locally — in that case the alarm still fires, just without the picture.)
-- 🌡️ **Per-detector sensors** — temperature, battery level and tamper for every detector that reports them, plus **low-battery** and **offline** alarms. Battery devices appear in Homey's battery overview.
+- 🌡️ **Per-detector sensors** — temperature, battery level and tamper for every detector that reports them. Battery devices appear in Homey's battery overview, where Homey flags low batteries automatically; detectors that stop responding show as unavailable.
 - 🔌 **Panel health** — mains-power-lost (`alarm_mains`) and tamper on the panel device.
 - 🚪🚶🔥 **Correct sensor type per detector** — motion, door/contact, smoke, glass-break, water leak, CO, gas, heat and panic are each mapped to the right Homey alarm capability, with a distinct icon.
 - 🧩 **Peripherals** — wireless keypads, external sirens, repeaters, card readers and relay/output modules.

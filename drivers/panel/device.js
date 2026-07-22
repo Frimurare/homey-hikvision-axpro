@@ -1,6 +1,6 @@
 'use strict';
 const Homey = require('homey');
-const { LOW_BATTERY, zoneProfile, PERIPHERALS } = require('../../lib/profiles');
+const { zoneProfile, PERIPHERALS } = require('../../lib/profiles');
 
 // device type -> exDevStatus list/item names (fallback when data.list is absent)
 const PERIPHERAL_MAP = {
@@ -76,6 +76,13 @@ class AxProDevice extends Homey.Device {
     for (const cap of this._desiredCapabilities()) {
       if (!this.hasCapability(cap)) { await this.addCapability(cap).catch(() => {}); }
     }
+    // Homey never removes capabilities on app update, so devices paired with an
+    // older version still carry alarm_battery. It was dropped (measure_battery
+    // already shows the level and Homey warns on low battery), and having both
+    // is not allowed - so strip it from existing devices here.
+    if (this.hasCapability('alarm_battery')) {
+      await this.removeCapability('alarm_battery').catch(() => {});
+    }
   }
 
   async _setArm(value, sub) {
@@ -137,10 +144,7 @@ class AxProDevice extends Homey.Device {
       if (!Z) { await this.setUnavailable('Offline').catch(() => {}); return; }
       await this.setAvailable().catch(() => {});
       if (Z.temperature !== undefined) this._set('measure_temperature', Z.temperature);
-      if (Z.chargeValue !== undefined) {
-        this._set('measure_battery', Z.chargeValue);
-        this._set('alarm_battery', Z.chargeValue <= LOW_BATTERY);
-      }
+      if (Z.chargeValue !== undefined) this._set('measure_battery', Z.chargeValue);
       this._set('alarm_tamper', !!Z.tamperEvident);
       const triggered = !!Z.alarm;
       if ('magnetOpenStatus' in Z) this._set('alarm_contact', !!Z.magnetOpenStatus);
@@ -166,10 +170,7 @@ class AxProDevice extends Homey.Device {
     if (!rec) { await this.setUnavailable('Offline').catch(() => {}); return; }
     await this.setAvailable().catch(() => {});
     if (rec.temperature !== undefined) this._set('measure_temperature', rec.temperature);
-    if (rec.chargeValue !== undefined) {
-      this._set('measure_battery', rec.chargeValue);
-      this._set('alarm_battery', rec.chargeValue <= LOW_BATTERY);
-    }
+    if (rec.chargeValue !== undefined) this._set('measure_battery', rec.chargeValue);
     this._set('alarm_tamper', !!rec.tamperEvident);
     if (this._type === 'output') this._set('onoff', !!(rec.enabled || rec.output || rec.on));
   }
