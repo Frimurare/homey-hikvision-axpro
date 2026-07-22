@@ -10,5 +10,9 @@
   "1.1.2": {
     "en": "Corrected the store description (the app no longer mentions a local camera snapshot, which is not available on current AX PRO firmware).",
     "sv": "Rattad butiksbeskrivning (appen namner inte langre en lokal kamera-ognablicksbild, som inte finns pa nuvarande AX PRO-firmware)."
+  },
+  "1.1.3": {
+    "en": "New photo-based app and device images. Battery: each detector now uses a single battery indicator (measure_battery) instead of two, so there is no more duplicate battery component - Homey still flags a low battery automatically. Devices added with an earlier version are cleaned up automatically when you update.",
+    "sv": "Nya foto-baserade app- och enhetsbilder. Batteri: varje detektor anvander nu en enda batteriindikator (measure_battery) i stallet for tva, sa dubbla batterikomponenten forsvinner - Homey varnar fortfarande automatiskt vid lagt batteri. Enheter som lades till med en tidigare version stadas automatiskt nar du uppdaterar."
   }
 }
