@@ -14,5 +14,9 @@
   "1.1.4": {
     "en": "New photo-based app and device images. Battery: each detector now uses a single battery indicator (measure_battery) instead of two, so there is no more duplicate battery component - Homey still flags a low battery automatically. Devices added with an earlier version are cleaned up automatically when you update.",
     "sv": "Nya foto-baserade app- och enhetsbilder. Batteri: varje detektor anvander nu en enda batteriindikator (measure_battery) i stallet for tva, sa dubbla batterikomponenten forsvinner - Homey varnar fortfarande automatiskt vid lagt batteri. Enheter som lades till med en tidigare version stadas automatiskt nar du uppdaterar."
+  },
+  "1.1.5": {
+    "en": "New App Store artwork: the app image now shows the AX PRO system (panel, motion detector and door contact) on a Hikvision-style background, distinct from the device images.",
+    "sv": "Ny butiksbild: appbilden visar nu AX PRO-systemet (panel, rorelsedetektor och dorrkontakt) pa en bakgrund i Hikvision-stil, skild fran enhetsbilderna."
   }
 }
