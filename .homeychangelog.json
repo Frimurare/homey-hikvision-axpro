@@ -18,5 +18,9 @@
   "1.1.5": {
     "en": "New App Store artwork: the app image now shows the AX PRO system (panel, motion detector and door contact) on a Hikvision-style background, distinct from the device images.",
     "sv": "Ny butiksbild: appbilden visar nu AX PRO-systemet (panel, rorelsedetektor och dorrkontakt) pa en bakgrund i Hikvision-stil, skild fran enhetsbilderna."
+  },
+  "1.1.7": {
+    "en": "Gentler on the panel: status polling now runs every 30 seconds instead of every 5. Alarms still arrive instantly over the real-time event stream, so nothing feels slower - the panel just gets a lot less traffic.",
+    "sv": "Snallare mot centralen: statusavlasningen sker nu var 30:e sekund i stallet for var 5:e. Larm kommer fortfarande direkt via realtidsstrommen, sa inget kanns langsammare - centralen slipper bara massor av trafik."
   }
 }
