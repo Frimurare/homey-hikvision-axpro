@@ -120,3 +120,74 @@ PIR detectors sleep while disarmed (battery life) and only report motion when ar
 magnetic contacts report 24/7. This is documented under *"Understanding your sensors"* so
 users don't file the expected behaviour as a bug. PIR-CAM images therefore only exist for
 **armed** alarms — consistent with feature 1.
+
+---
+
+## v1.1.8 — field reports (2026-08-16)
+
+Three items raised by users running the app on panels and firmware builds that are not
+available here for testing. Nothing below contains user or site details.
+
+### 🔓 1. Login fails on newer panel/web builds under cloud management — HIGH PRIORITY
+
+**Reported:** a user on panel firmware V1.3.1 with a newer web build, managed through the
+vendor's cloud/installer portal, cannot complete pairing.
+
+**Symptoms:**
+- Cloud-tied *administrator* and *installer* accounts return **401**. This is expected
+  rather than a fault: accounts bound to the vendor cloud are not available for local
+  authentication against the panel itself, whichever spelling of the name is used.
+  Creating a dedicated **local user** on the panel is the correct approach.
+- That local user gets past the 401 and then returns **HTTP 400**. Crucially, the same 400
+  appears with a deliberately *incorrect* password — so the request is failing before the
+  credentials are ever evaluated.
+
+**Cause:** the panel and the app negotiate a set of login parameters before authentication
+takes place. The login routine does not yet validate the full field set that newer builds
+return, so when the response differs from what is expected the request is assembled from an
+incomplete set and the panel rejects it — which is why the same 400 appears regardless of
+the password supplied. Field-level analysis is tracked with the fix.
+
+**Planned:**
+- Validate the capability response in full and adapt to what a given panel actually
+  provides, rather than assuming a fixed field set.
+- Choose the authentication variant from what the panel reports, with a sensible default
+  when a field is absent.
+- Fail with a clear, specific message when the negotiation genuinely cannot proceed.
+
+**Verification:** confirm against the reporting user's capabilities response (the endpoint
+needs no authentication) plus a Homey diagnostic report taken right after a failed login.
+This panel/web/cloud combination is not available locally, so a field test is required
+before release.
+
+### 🚪 2. Shock/vibration triggers not surfaced on contact-type detectors
+
+**Reported:** a user with a combined magnet + shock door contact. The magnet side works
+(open/close is reflected in Homey); shock triggers never appear.
+
+**Cause:** `zoneProfile()` maps shock-capable detectors to the *contact* profile, whose
+capability set is `alarm_contact` plus temperature/battery/tamper. `device.js` derives
+`alarm_contact` from `magnetOpenStatus` and mirrors the zone's `alarm` flag onto the other
+alarm capabilities — none of which exist on this profile. Since `_set()` no-ops on
+capabilities a device does not have, the shock event is read from the panel and then
+silently discarded.
+
+**Planned:** give shock-capable detectors a capability that reflects the zone alarm flag
+alongside the magnet state, so both halves of a combined detector are visible. Confirm the
+`detectorType` string these detectors report and which field changes on shock, from a field
+capture taken before and immediately after a trigger, before settling the mapping.
+
+### 💬 3. Pairing-dialog error messages are too long to read
+
+Homey's pairing dialog does not scroll, so a long message — a full request URL, for example
+— is truncated and the useful part is lost. Planned: a short, actionable message in the
+dialog, with the full technical detail written to the app log where it can be read and
+included in a diagnostic report.
+
+### 🧪 4. Diagnostic dump (supporting the above)
+
+Add a one-time, log-only dump of the raw zone payload and of the field names present in the
+login capabilities response, so field issues can be diagnosed from a Homey diagnostic report
+instead of asking users to query the panel by hand in a browser. **Must reuse the app's
+existing session** — the panel keeps a very small session table, and a competing login makes
+it unreachable for several minutes.
