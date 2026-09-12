@@ -39,7 +39,8 @@ class AxProDevice extends Homey.Device {
 
     // Panel: arm/disarm the whole system
     if (this._type === 'panel') {
-      this.registerCapabilityListener('homealarm_state', (v) => this._setArm(v, '0xffffffff'));
+      // whole system: wildcard id, with per-area fallback on firmware that rejects it
+      this.registerCapabilityListener('homealarm_state', (v) => this._poller.armAll(v));
     }
     // Area: arm/disarm just this partition
     if (this._type === 'area') {
@@ -90,6 +91,7 @@ class AxProDevice extends Homey.Device {
     if (value === 'armed') await api.armAway(sub);
     else if (value === 'partially_armed') await api.armStay(sub);
     else await api.disarm(sub);
+    this._poller.refreshSoon();
   }
 
   _set(cap, val) { return this.hasCapability(cap) && this.setCapabilityValue(cap, val).catch(() => {}); }

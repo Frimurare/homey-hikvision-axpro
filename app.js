@@ -35,7 +35,7 @@ class HikAxProApp extends Homey.App {
   getPoller({ host, username, password }) {
     this._refs.set(host, (this._refs.get(host) || 0) + 1);
     if (!this._pollers.has(host)) {
-      const p = new ApiPoller({ host, username, password });
+      const p = new ApiPoller({ host, username, password, log: (...a) => this.log(...a) });
       this._pollers.set(host, p);
       this._prev.set(host, { firstPoll: true, armed: false, zoneAlarms: new Set() });
       // keep the unsubscribe fns so releasePoller() can actually release
@@ -192,6 +192,7 @@ class HikAxProApp extends Homey.App {
       if (!p) throw new Error(`No connected panel has area "${args.area.name || args.area.id}"`);
       if (args.mode === 'stay') await p.api.armStay(String(args.area.id));
       else await p.api.armAway(String(args.area.id));
+      p.refreshSoon();
       return true;
     });
     const disarmArea = this.homey.flow.getActionCard('disarm_area');
@@ -200,6 +201,7 @@ class HikAxProApp extends Homey.App {
       const p = this._pollerHavingArea(args.area.id);
       if (!p) throw new Error(`No connected panel has area "${args.area.name || args.area.id}"`);
       await p.api.disarm(String(args.area.id));
+      p.refreshSoon();
       return true;
     });
     const bypass = this.homey.flow.getActionCard('bypass_zone');
@@ -208,6 +210,7 @@ class HikAxProApp extends Homey.App {
       const p = this._pollerHavingZone(args.zone.id);
       if (!p) throw new Error(`No connected panel has zone "${args.zone.name || args.zone.id}"`);
       await p.api.bypassZone(args.zone.id, args.state === 'bypass');
+      p.refreshSoon();
       return true;
     });
     this.homey.flow.getActionCard('siren').registerRunListener(async (args) => {

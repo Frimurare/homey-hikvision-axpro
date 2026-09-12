@@ -22,5 +22,9 @@
   "1.1.7": {
     "en": "Gentler on the panel: status polling now runs every 30 seconds instead of every 5. Alarms still arrive instantly over the real-time event stream, so nothing feels slower - the panel just gets a lot less traffic.",
     "sv": "Snallare mot centralen: statusavlasningen sker nu var 30:e sekund i stallet for var 5:e. Larm kommer fortfarande direkt via realtidsstrommen, sa inget kanns langsammare - centralen slipper bara massor av trafik."
+  },
+  "1.1.8": {
+    "en": "Fixes arming on newer panel firmware (e.g. V1.3.1 build 251113), where arm returned 404 while disarm worked: arm/disarm/bypass now use the panel's JSON form of the command and fall back to the older form, and whole-system arming falls back to per-area commands if the panel rejects the all-areas id. Homey now refreshes the panel state right after arm/disarm. Shock/vibration detectors (incl. combined magnet+shock contacts) now show a shock trigger as a generic alarm. Pairing errors are short and readable, with the full detail in the app log. Login negotiation tolerates newer capability responses. A one-time, log-only diagnostic summary (model, firmware, field names - no values) helps support from a diagnostic report.",
+    "sv": "Rattar tillkoppling pa nyare panel-firmware (t.ex. V1.3.1 build 251113) dar tillkoppling gav 404 medan frankoppling fungerade: till-/frankoppling/bypass anvander nu panelens JSON-form av kommandot med fallback till den aldre formen, och tillkoppling av hela systemet faller tillbaka pa per-omrade om panelen avvisar alla-omraden-id:t. Homey uppdaterar nu panelens lage direkt efter till-/frankoppling. Stotdetektorer (inkl. kombinerade magnet+stot-kontakter) visar nu stot som generellt larm. Parningsfel ar korta och lasbara, med full detalj i appens logg. Inloggningen tal nyare capabilities-svar. En engangs diagnossammanfattning (modell, firmware, faltnamn - inga varden) i loggen underlattar support via diagnostikrapport."
   }
 }

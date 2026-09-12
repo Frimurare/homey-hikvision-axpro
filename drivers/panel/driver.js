@@ -8,6 +8,39 @@ const { zoneProfile, PERIPHERALS } = require('../../lib/profiles');
 const ICON = (name) => `/${name}.svg`;
 
 class PanelDriver extends Homey.Driver {
+  /**
+   * Homey's pairing dialog cannot scroll, so a long message (a request URL,
+   * an XML body) loses its useful part. Return a short, actionable line for
+   * the dialog and write the full technical detail to the app log, where it
+   * ends up in a diagnostic report.
+   */
+  _shortLoginError(e, host) {
+    const msg = String((e && e.message) || e);
+    this.error(`Login to ${host} failed:`, msg);
+    if (e && e.capFields) this.error('  capabilities fields:', e.capFields.join(','));
+    if (e && e.body) this.error('  panel answered:', e.body);
+    const t = (key, fallback) => {
+      const v = this.homey.__(key);
+      return (v && v !== key) ? v : fallback;
+    };
+    if (e && e.unlockTime) {
+      return t('pair.err_locked', 'The panel has locked this address after failed logins. Wait {s} seconds and try again.')
+        .replace('{s}', String(e.unlockTime));
+    }
+    if (e && (e.code === 401 || /badAuthorization|Unauthorized/i.test(msg))) {
+      return t('pair.err_auth', 'Login refused (401). Use a local Administrator user on the panel — cloud (Hik-Connect) accounts cannot log in locally.');
+    }
+    if (e && e.code === 400) {
+      return t('pair.err_400', 'The panel rejected the login request (400 {reason}). Please send a diagnostic report from the app settings.')
+        .replace('{reason}', (e.reason || '').trim()).replace('(400 )', '(400)');
+    }
+    if (/timeout|ECONNREFUSED|EHOSTUNREACH|ENETUNREACH|ENOTFOUND|ECONNRESET/i.test(msg)) {
+      return t('pair.err_unreachable', 'Cannot reach the panel at {host} (HTTP, port 80). Check the IP address and that Homey is on the same network.')
+        .replace('{host}', host);
+    }
+    return `${t('pair.err_generic', 'Login failed')}: ${msg.slice(0, 90)}`;
+  }
+
   // credentials of an already-paired panel, if any (lets you add more detectors
   // later without re-entering the panel IP/login — feature H)
   _existingPanelCreds() {
@@ -33,7 +66,11 @@ class PanelDriver extends Homey.Driver {
 
     session.setHandler('connect', async ({ host, username, password }) => {
       const api = new HikAxPro({ host, username, password });
-      await api.login();           // throws on bad credentials -> shown in pair view
+      try {
+        await api.login();         // throws on bad credentials -> shown in pair view
+      } catch (e) {
+        throw new Error(this._shortLoginError(e, host));
+      }
       await api.logout();
       creds = { host, username, password };
       return true;
@@ -53,7 +90,11 @@ class PanelDriver extends Homey.Driver {
   async onRepair(session, device) {
     session.setHandler('connect', async ({ host, username, password }) => {
       const api = new HikAxPro({ host, username, password });
-      await api.login();
+      try {
+        await api.login();
+      } catch (e) {
+        throw new Error(this._shortLoginError(e, host));
+      }
       await api.logout();
       // update every device on this panel so they all keep working
       const oldHost = device.getStore().host || device.getData().host;

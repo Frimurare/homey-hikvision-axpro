@@ -34,6 +34,18 @@ Utred mot Athom-support/community innan tid läggs på en avkodare.
 
 ## Beslut & lärdomar
 
+- **Arm kräver `format=json` på nyare firmware (1.1.8).** Panelens egen
+  endpoint-lista anger arm som `…/arm/<ID>?ways=<string>&format=json` men
+  disarm utan `format`. V1.3.1 build 251113 svarar 404 `methodNotAllowed` på
+  den nakna arm-URL:en, äldre firmware svarar på båda. Därför: JSON-form först,
+  fallback till naken URL, kom ihåg vad som funkade (`_ctlStyle`). Ett riktigt
+  nej från panelen (400 `arming` = öppen zon/fel) får ALDRIG trigga fallback.
+- **Testa aldrig mot Ulfs panel.** Kontrollskiktet testas mot en mock-panel
+  (`node --test test/`, tre firmware-beteenden + inloggning). Fälttest =
+  Ulf installerar på sin Homey och trycker till/från EN gång.
+- **AX Hybrid Pro (DS-PHA64)** kör samma SecurityCP-ISAPI; HA-integrationen
+  är verifierad där med fyra områden. Vår app bör fungera, otestat av oss.
+
 - **Pollningsintervall 30 s** (v1.1.7). Var 5 s (default i `ApiPoller`), vilket
   gav ~36 anrop/minut mot en liten inbyggd panel utan nytta: larmhändelser
   kommer ändå i realtid via `alertStream`, pollningen uppdaterar bara status.
