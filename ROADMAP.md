@@ -135,6 +135,10 @@ users don't file the expected behaviour as a bug. PIR-CAM images therefore only 
 
 Inspiration/verification sources: `petrleocompel/hikaxpro` + `hikaxpro_hacs` (always `format=json`, `X-Userlevel`, confirmed working on AX Hybrid Pro DS-PHA64-LP with 4 areas) and `emmetdel/hikvision-api` (panel endpoint dump, web-page login body).
 
+## Next release — small items
+
+- **AX Hybrid Pro note (README + store description).** An integrator asked (portal Suggestion, Aug 2026, anonymous) whether the app works with AX Hybrid Pro. Same local ISAPI; other integrations are confirmed on DS-PHA64 with four areas; not tested by us. Add one line: "AX Hybrid Pro (DS-PHA64/PHA96) uses the same local API and is expected to work, including per-area arming. Not verified by the developer — a diagnostic report from a Hybrid Pro installation is welcome." Decided 2026-09-12: ship with the next release, not as a standalone update.
+
 ## v1.1.8 — field reports (2026-08-16)
 
 Three items raised by users running the app on panels and firmware builds that are not
