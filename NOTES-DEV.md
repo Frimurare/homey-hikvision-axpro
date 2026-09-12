@@ -13,7 +13,17 @@ direkt. Kontrollera alltid `homey --version` mot `npm view homey version`
 innan en publicering. Deploy utan RDP: guest-agent → schtasks som amigo
 (`C:\temp\axpro-install-180.bat`, logg `C:\temp\axpro-install-180.log`).
 
-### Publiceringsflödet stannar efter validering
+### Publicering utan RDP (fungerade 2026-09-12, CLI 4.5.0)
+`homey app publish` som amigo via schtasks med stdin från en pipe:
+`(echo n&ping -n 240 127.0.0.1 >nul)| call homey app publish`. Promptordning:
+riktlinje-frågan (y/N) kommer BARA första gången per användare (svaret sparas),
+sedan versionsfrågan (svara n — annars bumpar CLI:t app.json och frågar efter
+en ny changelog). Pipen måste hållas öppen tills uppladdningen är klar, annars
+dör inquirer på EOF ("unsettled top-level await"). Resultat: "Created Build ID
+N … successfully uploaded" + länk till dev-portalen, där själva publiceringen
+(Test/certifiering) görs manuellt med Athom-inloggning i webbläsaren.
+
+### Publiceringsflödet stannar efter validering (historik, CLI 4.0.5)
 `homey app publish` kommer fram till `App validated successfully against level
 publish` och står sedan still — uppladdningen sker aldrig och inget dyker upp i
 dev-portalen. Inträffade 2026-07-26, flera försök.
