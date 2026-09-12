@@ -4,7 +4,12 @@
     "connect": "Connetti",
     "host": "Indirizzo IP",
     "username": "Nome utente",
-    "password": "Password"
+    "password": "Password",
+    "err_locked": "La centrale ha bloccato questo indirizzo dopo accessi non riusciti. Attendi {s} secondi e riprova.",
+    "err_auth": "Accesso rifiutato (401). Usa un utente Amministratore locale sulla centrale: gli account cloud (Hik-Connect) non possono accedere localmente.",
+    "err_400": "La centrale ha respinto la richiesta di accesso (400 {reason}). Invia un rapporto diagnostico dalle impostazioni dell'app.",
+    "err_unreachable": "Impossibile raggiungere la centrale su {host} (HTTP, porta 80). Controlla l'indirizzo IP e che Homey sia sulla stessa rete.",
+    "err_generic": "Accesso non riuscito"
   },
   "device": {
     "panel": "Centrale AX PRO",

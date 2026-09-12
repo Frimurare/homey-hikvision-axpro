@@ -4,7 +4,12 @@
     "connect": "Koble til",
     "host": "IP-adresse",
     "username": "Brukernavn",
-    "password": "Passord"
+    "password": "Passord",
+    "err_locked": "Panelet har låst denne adressen etter mislykkede innlogginger. Vent {s} sekunder og prøv igjen.",
+    "err_auth": "Innlogging avvist (401). Bruk en lokal administratorbruker på panelet – skykontoer (Hik-Connect) kan ikke logge inn lokalt.",
+    "err_400": "Panelet avviste innloggingsforespørselen (400 {reason}). Send gjerne en diagnoserapport fra appens innstillinger.",
+    "err_unreachable": "Får ikke kontakt med panelet på {host} (HTTP, port 80). Sjekk IP-adressen og at Homey er på samme nettverk.",
+    "err_generic": "Innlogging mislyktes"
   },
   "device": {
     "panel": "AX PRO-sentral",

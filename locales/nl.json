@@ -4,7 +4,12 @@
     "connect": "Verbinden",
     "host": "IP-adres",
     "username": "Gebruikersnaam",
-    "password": "Wachtwoord"
+    "password": "Wachtwoord",
+    "err_locked": "De centrale heeft dit adres geblokkeerd na mislukte aanmeldingen. Wacht {s} seconden en probeer het opnieuw.",
+    "err_auth": "Aanmelding geweigerd (401). Gebruik een lokale beheerder op de centrale – cloudaccounts (Hik-Connect) kunnen niet lokaal inloggen.",
+    "err_400": "De centrale heeft het aanmeldverzoek afgewezen (400 {reason}). Stuur een diagnoserapport via de app-instellingen.",
+    "err_unreachable": "De centrale op {host} is niet bereikbaar (HTTP, poort 80). Controleer het IP-adres en of Homey in hetzelfde netwerk zit.",
+    "err_generic": "Aanmelden mislukt"
   },
   "device": {
     "panel": "AX PRO-paneel",

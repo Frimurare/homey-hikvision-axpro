@@ -4,7 +4,12 @@
     "connect": "连接",
     "host": "IP 地址",
     "username": "用户名",
-    "password": "密码"
+    "password": "密码",
+    "err_locked": "面板在多次登录失败后已锁定此地址。请等待 {s} 秒后重试。",
+    "err_auth": "登录被拒绝（401）。请使用面板上的本地管理员用户，云账户（Hik-Connect）无法本地登录。",
+    "err_400": "面板拒绝了登录请求（400 {reason}）。请从应用设置中发送诊断报告。",
+    "err_unreachable": "无法连接到 {host} 上的面板（HTTP，端口 80）。请检查 IP 地址以及 Homey 是否在同一网络。",
+    "err_generic": "登录失败"
   },
   "device": {
     "panel": "AX PRO 主机",

@@ -4,7 +4,12 @@
     "connect": "Conectar",
     "host": "Dirección IP",
     "username": "Usuario",
-    "password": "Contraseña"
+    "password": "Contraseña",
+    "err_locked": "El panel ha bloqueado esta dirección tras varios inicios de sesión fallidos. Espere {s} segundos e inténtelo de nuevo.",
+    "err_auth": "Inicio de sesión rechazado (401). Use un usuario Administrador local en el panel: las cuentas en la nube (Hik-Connect) no pueden iniciar sesión localmente.",
+    "err_400": "El panel rechazó la solicitud de inicio de sesión (400 {reason}). Envíe un informe de diagnóstico desde los ajustes de la app.",
+    "err_unreachable": "No se puede acceder al panel en {host} (HTTP, puerto 80). Compruebe la dirección IP y que Homey esté en la misma red.",
+    "err_generic": "Error de inicio de sesión"
   },
   "device": {
     "panel": "Central AX PRO",

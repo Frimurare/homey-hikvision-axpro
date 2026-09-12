@@ -4,7 +4,12 @@
     "connect": "Połącz",
     "host": "Adres IP",
     "username": "Nazwa użytkownika",
-    "password": "Hasło"
+    "password": "Hasło",
+    "err_locked": "Centrala zablokowała ten adres po nieudanych logowaniach. Odczekaj {s} sekund i spróbuj ponownie.",
+    "err_auth": "Logowanie odrzucone (401). Użyj lokalnego użytkownika Administrator na centrali – konta chmurowe (Hik-Connect) nie mogą logować się lokalnie.",
+    "err_400": "Centrala odrzuciła żądanie logowania (400 {reason}). Wyślij raport diagnostyczny z ustawień aplikacji.",
+    "err_unreachable": "Brak połączenia z centralą pod adresem {host} (HTTP, port 80). Sprawdź adres IP i czy Homey jest w tej samej sieci.",
+    "err_generic": "Logowanie nie powiodło się"
   },
   "device": {
     "panel": "Centrala AX PRO",

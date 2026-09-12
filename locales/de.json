@@ -4,7 +4,12 @@
     "connect": "Verbinden",
     "host": "IP-Adresse",
     "username": "Benutzername",
-    "password": "Passwort"
+    "password": "Passwort",
+    "err_locked": "Die Zentrale hat diese Adresse nach fehlgeschlagenen Anmeldungen gesperrt. Warten Sie {s} Sekunden und versuchen Sie es erneut.",
+    "err_auth": "Anmeldung abgelehnt (401). Verwenden Sie einen lokalen Administrator auf der Zentrale – Cloud-Konten (Hik-Connect) können sich nicht lokal anmelden.",
+    "err_400": "Die Zentrale hat die Anmeldeanfrage abgelehnt (400 {reason}). Bitte senden Sie einen Diagnosebericht aus den App-Einstellungen.",
+    "err_unreachable": "Die Zentrale unter {host} ist nicht erreichbar (HTTP, Port 80). Prüfen Sie die IP-Adresse und ob Homey im selben Netzwerk ist.",
+    "err_generic": "Anmeldung fehlgeschlagen"
   },
   "device": {
     "panel": "AX PRO-Zentrale",
