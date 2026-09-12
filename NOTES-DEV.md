@@ -5,6 +5,14 @@ upptäcks som är värt att minnas till nästa gång.
 
 ## Öppna punkter
 
+### `homey app install` → "Missing File" (LÖST 2026-09-12)
+Homey CLI 4.0.5 mot en uppdaterad Homey Pro packade appen men installationen
+svarade `✗ Missing File`. Orsak: för gammalt CLI. **Fix: Node 22 + Homey CLI
+4.5.0 på VM101** (CLI ≥4.5 kräver Node ≥22). Efter det installerades 1.8.0
+direkt. Kontrollera alltid `homey --version` mot `npm view homey version`
+innan en publicering. Deploy utan RDP: guest-agent → schtasks som amigo
+(`C:\temp\axpro-install-180.bat`, logg `C:\temp\axpro-install-180.log`).
+
 ### Publiceringsflödet stannar efter validering
 `homey app publish` kommer fram till `App validated successfully against level
 publish` och står sedan still — uppladdningen sker aldrig och inget dyker upp i
