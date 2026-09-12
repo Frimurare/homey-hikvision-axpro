@@ -34,7 +34,7 @@ Utred mot Athom-support/community innan tid läggs på en avkodare.
 
 ## Beslut & lärdomar
 
-- **Arm kräver `format=json` på nyare firmware (1.1.8).** Panelens egen
+- **Arm kräver `format=json` på nyare firmware (1.8.0).** Panelens egen
   endpoint-lista anger arm som `…/arm/<ID>?ways=<string>&format=json` men
   disarm utan `format`. V1.3.1 build 251113 svarar 404 `methodNotAllowed` på
   den nakna arm-URL:en, äldre firmware svarar på båda. Därför: JSON-form först,

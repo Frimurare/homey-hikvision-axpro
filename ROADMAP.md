@@ -123,9 +123,9 @@ users don't file the expected behaviour as a bug. PIR-CAM images therefore only 
 
 ---
 
-## v1.1.8 — shipped 2026-09-12 (status of the field reports below)
+## v1.8.0 — shipped 2026-09-12 (status of the field reports below)
 
-| # | Item | Status in 1.1.8 |
+| # | Item | Status in 1.8.0 |
 |---|------|-----------------|
 | 0 | **Arm returns 404 (disarm works)** on newer firmware — V1.3.1 build 251113, reported via two Homey crash reports (2026-08-23, 2026-09-07) and the community thread *"Hikvision AX Pro Alarm 404 error"* (2026-09-02) | **Fixed.** The panel's own endpoint list documents arm as `/ISAPI/SecurityCP/control/arm/<ID>?ways=<string>&format=json` and disarm *without* `format`. Newer builds only serve the JSON form for arm (plain URL → 404 `methodNotAllowed`), older builds serve both. `HikAxPro._control()` now sends the JSON form first, falls back to the plain form on 404/405, and remembers what worked. Whole-system arm falls back to per-area commands if the panel rejects `0xffffffff`. Status is re-polled 1.5 s after any control command. Covered by `test/control.test.js` (mock panel). Field confirmation on a real 251113 panel still wanted. |
 | 1 | Login 400 on newer builds under cloud management (Local User) | **Partly.** Login negotiation now tolerates a missing `sessionIDVersion`/`isIrreversible`, never writes `null` into the request, and sends the same element set/order as the panel's web page (`isSessionIDValidLongTerm`). The full 400 body and the capability field names are written to the app log on failure, so the reporter's diagnostic report will show the cause. Open experiment if it persists: the `X-Userlevel` header (0 = installer, 1 = admin/operator) that the HA integration sends on the capabilities request — a *Local User* (role 625-type) may need its own level. Needs the reporter's `sessionLogin/capabilities?username=<local user>` XML. |
