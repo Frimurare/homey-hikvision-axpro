@@ -15,5 +15,14 @@
     "panel": "Centrale AX PRO",
     "zone": "Zona",
     "area": "Area"
+  },
+  "errors": {
+    "siren_not_supported": "L'accensione/spegnimento della sirena non è supportato dal firmware di questa centrale (risposta 404 notSupport). Inserimento, disinserimento e sensori non sono interessati.",
+    "area_state": "{{area}} è {{current}}, quindi la centrale non ha accettato \"{{want}}\". Modificalo dalla centrale o disinserisci prima, poi riprova.",
+    "system": "il sistema",
+    "mode_disarm": "disinserito",
+    "mode_away": "inserito (fuori casa)",
+    "mode_stay": "inserito (in casa)",
+    "mode_unknown": "sconosciuto"
   }
 }

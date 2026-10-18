@@ -15,5 +15,14 @@
     "panel": "AX PRO 主机",
     "zone": "防区",
     "area": "区域"
+  },
+  "errors": {
+    "siren_not_supported": "此面板固件不支持警号开/关（面板返回 404 notSupport）。布防、撤防和传感器不受影响。",
+    "area_state": "{{area}} 当前为{{current}}，因此面板未接受“{{want}}”。请在面板上更改，或先撤防后重试。",
+    "system": "系统",
+    "mode_disarm": "已撤防",
+    "mode_away": "已布防（外出）",
+    "mode_stay": "已布防（在家）",
+    "mode_unknown": "未知"
   }
 }

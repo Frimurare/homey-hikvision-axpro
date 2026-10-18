@@ -15,5 +15,14 @@
     "panel": "Centrale AX PRO",
     "zone": "Zone",
     "area": "Zone"
+  },
+  "errors": {
+    "siren_not_supported": "La commande de la sirène n'est pas prise en charge par le firmware de cette centrale (réponse 404 notSupport). L'armement, le désarmement et les capteurs ne sont pas concernés.",
+    "area_state": "{{area}} est {{current}}, la centrale n'a donc pas accepté « {{want}} ». Modifiez-le depuis la centrale ou désarmez d'abord, puis réessayez.",
+    "system": "le système",
+    "mode_disarm": "désarmé",
+    "mode_away": "armé (absent)",
+    "mode_stay": "armé (présent)",
+    "mode_unknown": "inconnu"
   }
 }

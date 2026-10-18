@@ -15,5 +15,14 @@
     "panel": "AX PRO-sentral",
     "zone": "Sone",
     "area": "Område"
+  },
+  "errors": {
+    "siren_not_supported": "Sirenestyring støttes ikke av panelets firmware (panelet svarte 404 notSupport). Til-/frakobling og sensorene påvirkes ikke.",
+    "area_state": "{{area}} er {{current}}, derfor godtok ikke panelet \"{{want}}\". Endre fra panelet eller frakoble først og prøv igjen.",
+    "system": "systemet",
+    "mode_disarm": "frakoblet",
+    "mode_away": "tilkoblet (borte)",
+    "mode_stay": "tilkoblet (hjemme)",
+    "mode_unknown": "ukjent"
   }
 }

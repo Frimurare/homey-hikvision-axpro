@@ -35,7 +35,7 @@ class HikAxProApp extends Homey.App {
   getPoller({ host, username, password }) {
     this._refs.set(host, (this._refs.get(host) || 0) + 1);
     if (!this._pollers.has(host)) {
-      const p = new ApiPoller({ host, username, password, log: (...a) => this.log(...a) });
+      const p = new ApiPoller({ host, username, password, log: (...a) => this.log(...a), appVersion: this.homey.manifest.version });
       this._pollers.set(host, p);
       this._prev.set(host, { firstPoll: true, armed: false, zoneAlarms: new Set() });
       // keep the unsubscribe fns so releasePoller() can actually release
@@ -190,9 +190,10 @@ class HikAxProApp extends Homey.App {
     armArea.registerRunListener(async (args) => {
       const p = this._pollerHavingArea(args.area.id);
       if (!p) throw new Error(`No connected panel has area "${args.area.name || args.area.id}"`);
-      if (args.mode === 'stay') await p.api.armStay(String(args.area.id));
-      else await p.api.armAway(String(args.area.id));
-      p.refreshSoon();
+      // same code path as the area device (ApiPoller.setArea): reads the real
+      // state first, no-op when already in that mode, verifies 400 armedStatus
+      try { await p.setArea(args.area.id, args.mode === 'stay' ? 'stay' : 'away', 'flow'); }
+      catch (e) { throw this.userError(e); }
       return true;
     });
     const disarmArea = this.homey.flow.getActionCard('disarm_area');
@@ -200,8 +201,8 @@ class HikAxProApp extends Homey.App {
     disarmArea.registerRunListener(async (args) => {
       const p = this._pollerHavingArea(args.area.id);
       if (!p) throw new Error(`No connected panel has area "${args.area.name || args.area.id}"`);
-      await p.api.disarm(String(args.area.id));
-      p.refreshSoon();
+      try { await p.setArea(args.area.id, 'disarm', 'flow'); }
+      catch (e) { throw this.userError(e); }
       return true;
     });
     const bypass = this.homey.flow.getActionCard('bypass_zone');
@@ -216,9 +217,32 @@ class HikAxProApp extends Homey.App {
     this.homey.flow.getActionCard('siren').registerRunListener(async (args) => {
       const p = this._anyPoller();
       if (!p) throw new Error('No panel is connected');
-      await p.api.sirenTest(args.state === 'on');
+      try { await p.siren(args.state === 'on', 'flow'); }
+      catch (e) { throw this.userError(e); }
       return true;
     });
+  }
+
+  /**
+   * Turn a control error into a message the user can act on, in the user's
+   * language. Panel details stay in the app log ([cmd] lines), not the popup.
+   */
+  userError(e) {
+    const t = (key, tokens) => {
+      const s = this.homey.__(key, tokens);
+      return (s && s !== key) ? s : null;
+    };
+    const modeName = (m) => t(`errors.mode_${m}`) || m;
+    let msg = null;
+    if (e && e.code === 'SIREN_NOT_SUPPORTED') msg = t('errors.siren_not_supported');
+    else if (e && e.code === 'AREA_STATE') {
+      msg = t('errors.area_state', { area: e.area === '*' ? (t('errors.system') || 'system') : e.area,
+        current: modeName(e.current), want: modeName(e.want) });
+    }
+    if (!msg) return e;
+    const out = new Error(msg);
+    out.code = e.code; out.cause = e;
+    return out;
   }
 
   _areaAutocomplete(query) {

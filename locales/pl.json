@@ -15,5 +15,14 @@
     "panel": "Centrala AX PRO",
     "zone": "Strefa",
     "area": "Strefa"
+  },
+  "errors": {
+    "siren_not_supported": "Sterowanie syreną nie jest obsługiwane przez firmware tej centrali (odpowiedź 404 notSupport). Uzbrajanie, rozbrajanie i czujniki działają normalnie.",
+    "area_state": "{{area}}: stan „{{current}}”, dlatego centrala nie przyjęła „{{want}}”. Zmień stan na centrali lub najpierw rozbrój i spróbuj ponownie.",
+    "system": "system",
+    "mode_disarm": "rozbrojony",
+    "mode_away": "uzbrojony (poza domem)",
+    "mode_stay": "uzbrojony (w domu)",
+    "mode_unknown": "nieznany"
   }
 }

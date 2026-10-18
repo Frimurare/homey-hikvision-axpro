@@ -15,5 +15,14 @@
     "panel": "AX PRO-panel",
     "zone": "Zon",
     "area": "Område"
+  },
+  "errors": {
+    "siren_not_supported": "Sirenstyrning stöds inte av panelens firmware (panelen svarade 404 notSupport). Till-/frånkoppling och sensorer påverkas inte.",
+    "area_state": "{{area}} är {{current}}, därför godtog panelen inte \"{{want}}\". Ändra från panelen eller frånkoppla först och försök igen.",
+    "system": "systemet",
+    "mode_disarm": "frånkopplat",
+    "mode_away": "tillkopplat (borta)",
+    "mode_stay": "tillkopplat (hemma)",
+    "mode_unknown": "okänt"
   }
 }

@@ -15,5 +15,14 @@
     "panel": "Central AX PRO",
     "zone": "Zona",
     "area": "Área"
+  },
+  "errors": {
+    "siren_not_supported": "El control de la sirena no es compatible con el firmware de este panel (respuesta 404 notSupport). Armar, desarmar y los sensores no se ven afectados.",
+    "area_state": "{{area}} está {{current}}, por eso el panel no aceptó «{{want}}». Cámbielo desde el panel o desarme primero y vuelva a intentarlo.",
+    "system": "el sistema",
+    "mode_disarm": "desarmado",
+    "mode_away": "armado (ausente)",
+    "mode_stay": "armado (en casa)",
+    "mode_unknown": "desconocido"
   }
 }

@@ -15,5 +15,14 @@
     "panel": "AX PRO-paneel",
     "zone": "Zone",
     "area": "Gebied"
+  },
+  "errors": {
+    "siren_not_supported": "Sirene aan/uit wordt niet ondersteund door de firmware van dit paneel (het paneel antwoordde 404 notSupport). In-/uitschakelen en de sensoren werken gewoon.",
+    "area_state": "{{area}} is {{current}}, daarom accepteerde het paneel \"{{want}}\" niet. Wijzig het via het paneel of schakel eerst uit en probeer het opnieuw.",
+    "system": "het systeem",
+    "mode_disarm": "uitgeschakeld",
+    "mode_away": "ingeschakeld (afwezig)",
+    "mode_stay": "ingeschakeld (thuis)",
+    "mode_unknown": "onbekend"
   }
 }

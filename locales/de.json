@@ -15,5 +15,14 @@
     "panel": "AX PRO-Zentrale",
     "zone": "Zone",
     "area": "Bereich"
+  },
+  "errors": {
+    "siren_not_supported": "Sirene ein/aus wird von der Firmware dieser Zentrale nicht unterstützt (Antwort 404 notSupport). Scharf-/Unscharfschalten und die Sensoren sind nicht betroffen.",
+    "area_state": "{{area}} ist {{current}}, daher hat die Zentrale \"{{want}}\" nicht angenommen. Ändern Sie es an der Zentrale oder schalten Sie zuerst unscharf und versuchen Sie es erneut.",
+    "system": "das System",
+    "mode_disarm": "unscharf",
+    "mode_away": "scharf (abwesend)",
+    "mode_stay": "scharf (zu Hause)",
+    "mode_unknown": "unbekannt"
   }
 }

@@ -15,5 +15,14 @@
     "panel": "AX PRO Panel",
     "zone": "Zone",
     "area": "Area"
+  },
+  "errors": {
+    "siren_not_supported": "Siren on/off is not supported by this panel's firmware (the panel answered 404 notSupport). Arming, disarming and the sensors are not affected.",
+    "area_state": "{{area}} is {{current}}, so the panel did not accept \"{{want}}\". Change it from the panel or disarm first, then try again.",
+    "system": "the system",
+    "mode_disarm": "disarmed",
+    "mode_away": "armed (away)",
+    "mode_stay": "armed (home)",
+    "mode_unknown": "unknown"
   }
 }
